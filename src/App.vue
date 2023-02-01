@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import SectionSelector from "./components/SectionSelector.vue";
+import Socials from "./components/Socials.vue";
 
 const focusedSection = ref<string>("");
 
@@ -14,30 +15,8 @@ const handleFocusLoss = () => {
 </script>
 
 <template>
-    <div class="absolute right-0 top-0 text-3xl gap-3 p-3 flex">
-        <a
-            href="https://github.com/Bernard-Borg/"
-            target="_blank"
-            class="hover:scale-110"
-        >
-            <i class="fa-brands fa-github"></i>
-        </a>
-        <a
-            href="https://stackoverflow.com/users/13426975/bernard-borg"
-            target="_blank"
-            class="hover:scale-110"
-        >
-            <i class="fa-brands fa-stack-overflow"></i>
-        </a>
-        <a
-            href="https://www.linkedin.com/in/bernard-borg/"
-            target="_blank"
-            class="hover:scale-110"
-        >
-            <i class="fa-brands fa-linkedin"></i>
-        </a>
-    </div>
-    <div class="flex flex-col">
+    <Socials />
+    <div class="flex flex-col mb-10">
         <div class="flex w-full justify-evenly mt-20">
             <img
                 class="rounded-full aspect-square object-cover"
@@ -83,7 +62,7 @@ const handleFocusLoss = () => {
                 @lostFocus="handleFocusLoss"
             />
             <SectionSelector
-                title="Interests/Hobbies"
+                title="Hobbies"
                 icon="fa-solid fa-gamepad"
                 sectionId="interests"
                 :focusedSection="focusedSection"
