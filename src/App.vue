@@ -47,7 +47,7 @@ const clickPicture = () => {
                 id="profilePicture"
                 alt="Picture of Bernard Borg"
                 class="rounded-full aspect-square object-cover animate__animated transition-all duration-300 shadow-xl shadow-white"
-                src="https://media.licdn.com/dms/image/C4D03AQFENYez-mpIQg/profile-displayphoto-shrink_800_800/0/1642376010470?e=1680739200&v=beta&t=lim4dPd3TnEjIiFxqij_JSk_6vc_hP2QI5UCtpAShI4"
+                src="/image.jpg"
                 @click="clickPicture"
             />
             <div class="flex flex-col justify-center mt-10 md:mt-0">
