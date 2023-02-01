@@ -40,23 +40,24 @@ const clickPicture = () => {
     <Socials />
     <div class="flex flex-col mb-10">
         <div
-            class="flex flex-col sm:items-center md:flex-row w-full justify-evenly mt-20"
+            class="flex flex-col items-center md:flex-row w-full justify-evenly mt-20"
         >
             <img
                 ref="profilePicture"
                 id="profilePicture"
+                alt="Picture of Bernard Borg"
                 class="rounded-full aspect-square object-cover animate__animated transition-all duration-300"
                 src="https://media.licdn.com/dms/image/C4D03AQFENYez-mpIQg/profile-displayphoto-shrink_800_800/0/1642376010470?e=1680739200&v=beta&t=lim4dPd3TnEjIiFxqij_JSk_6vc_hP2QI5UCtpAShI4"
                 @click="clickPicture"
             />
             <div class="flex flex-col justify-center mt-10 md:mt-0">
                 <h1
-                    class="text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold transition-all duration-300"
+                    class="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-center md:text-left transition-all duration-300"
                 >
                     Bernard Borg
                 </h1>
                 <h2
-                    class="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-thin text-center md:text-left transition-all duration-300"
+                    class="text-xl md:text-3xl lg:text-4xl xl:text-5xl font-thin text-center md:text-left transition-all duration-300"
                 >
                     Fullstack Software Developer
                 </h2>
@@ -120,6 +121,10 @@ const clickPicture = () => {
 <style>
 @import "@fortawesome/fontawesome-free/css/all.min.css";
 
+:root {
+    --custom-blue: rgb(37 99 235);
+}
+
 #profilePicture {
     width: 350px;
 }
@@ -138,7 +143,7 @@ const clickPicture = () => {
 
 @media screen and (max-width: 767px) {
     #profilePicture {
-        width: 350px;
+        width: 300px;
     }
 }
 </style>

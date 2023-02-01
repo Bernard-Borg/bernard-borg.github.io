@@ -11,6 +11,7 @@
                 href="https://github.com/Bernard-Borg/"
                 target="_blank"
                 class="hover:scale-110"
+                aria-label="Github link"
             >
                 <i class="fa-brands fa-github"></i>
             </a>
@@ -18,6 +19,7 @@
                 href="https://stackoverflow.com/users/13426975/bernard-borg"
                 target="_blank"
                 class="hover:scale-110"
+                aria-label="Stack Overflow link"
             >
                 <i class="fa-brands fa-stack-overflow"></i>
             </a>
@@ -25,6 +27,7 @@
                 href="https://www.linkedin.com/in/bernard-borg/"
                 target="_blank"
                 class="hover:scale-110"
+                aria-label="LinkedIn link"
             >
                 <i class="fa-brands fa-linkedin"></i>
             </a>
@@ -36,7 +39,8 @@
 #socials {
     background: white;
     border-bottom-left-radius: 5px;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid var(--custom-blue);
+    border-left: 2px solid var(--custom-blue);
 }
 
 #socials-decorator {
@@ -44,7 +48,7 @@
     height: 0;
     border-top: 0px solid transparent;
     border-bottom: 58px solid transparent;
-    border-right: 21px solid black;
+    border-right: 21px solid var(--custom-blue);
 }
 
 #socials-decorator:before {
@@ -56,6 +60,6 @@
     border-top: 0px solid transparent;
     border-bottom: 58px solid transparent;
     border-right: 21px solid white;
-    left: 1px;
+    left: 2px;
 }
 </style>
