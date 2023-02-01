@@ -2,8 +2,8 @@
 import { useTimeoutFn } from "@vueuse/shared";
 import "animate.css";
 import { ref } from "vue";
-import SectionSelector from "./components/SectionSelector.vue";
-import Socials from "./components/Socials.vue";
+import SectionSelector from "@/components/SectionSelector.vue";
+import Socials from "@/components/Socials.vue";
 
 const focusedSection = ref<string>("");
 const clickCounter = ref<number>(0);
