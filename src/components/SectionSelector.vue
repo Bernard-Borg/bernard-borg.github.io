@@ -22,7 +22,7 @@ const isFocused = computed(() => props.focusedSection === props.sectionId);
 <template>
     <div class="hover:scale-110">
         <div
-            class="box-border flex flex-col bg-white text-black rounded p-8 transition-transform gap-y-3"
+            class="box-border flex flex-col bg-white text-black rounded p-8 transition-transform gap-y-3 cursor-pointer"
             style="height: 250px"
             @click="$emit('focused', sectionId)"
         >
