@@ -46,7 +46,7 @@ const clickPicture = () => {
                 ref="profilePicture"
                 id="profilePicture"
                 alt="Picture of Bernard Borg"
-                class="rounded-full aspect-square object-cover animate__animated transition-all duration-300 shadow-xl shadow-white"
+                class="rounded-full aspect-square object-cover animate__animated transition-all duration-300"
                 src="/image.jpg"
                 @click="clickPicture"
             />
@@ -127,6 +127,7 @@ const clickPicture = () => {
 
 #profilePicture {
     width: 350px;
+    box-shadow: 0 0 400px rgb(255 255 255 / 28%);
 }
 
 @media screen and (max-width: 1279px) {
