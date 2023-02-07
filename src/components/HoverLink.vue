@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { type PropType, ref, computed, reactive } from "vue";
-import { useElementBounding } from "@vueuse/core";
+import { useElementBounding, useEventListener } from "@vueuse/core";
 
 const props = defineProps({
-    link: { type: String, required: false },
     text: { type: String, required: true },
+    link: { type: String, required: false },
     openInNewTab: { type: Boolean, default: true },
     tooltipPosition: {
         type: String as PropType<"top" | "bottom" | "left" | "right">,
@@ -13,38 +13,38 @@ const props = defineProps({
     tooltipOffset: { type: Number, required: false, default: 7 }
 });
 
-const spanElement = ref<HTMLElement>();
+const anchorElement = ref<HTMLElement>();
 const tooltipElement = ref<HTMLElement>();
 const showingTooltip = ref<boolean>(false);
 
-const spanBounds = reactive(useElementBounding(spanElement));
+const anchorBounds = reactive(useElementBounding(anchorElement));
 const tooltipBounds = reactive(useElementBounding(tooltipElement));
 
-window.addEventListener("resize", () => {
-    spanBounds.update();
+useEventListener(window, "resize", () => {
+    anchorBounds.update();
     tooltipBounds.update();
 });
 
 const position = computed(() => {
-    if (spanElement.value) {
+    if (anchorElement.value && tooltipBounds) {
         let hp;
 
         if (props.tooltipPosition === "left") {
-            hp = spanBounds.left - tooltipBounds.width - props.tooltipOffset;
+            hp = anchorBounds.left - tooltipBounds.width - props.tooltipOffset;
         } else if (props.tooltipPosition === "right") {
-            hp = spanBounds.left + spanBounds.width + props.tooltipOffset;
+            hp = anchorBounds.left + anchorBounds.width + props.tooltipOffset;
         } else {
-            hp = spanBounds.left + (spanBounds.width / 2 - tooltipBounds.width / 2);
+            hp = anchorBounds.left + (anchorBounds.width / 2 - tooltipBounds.width / 2);
         }
 
         let vp;
 
         if (props.tooltipPosition === "top") {
-            vp = spanBounds.top - tooltipBounds.height - props.tooltipOffset;
+            vp = anchorBounds.top - tooltipBounds.height - props.tooltipOffset;
         } else if (props.tooltipPosition === "bottom") {
-            vp = spanBounds.top + spanBounds.height + props.tooltipOffset;
+            vp = anchorBounds.top + anchorBounds.height + props.tooltipOffset;
         } else {
-            vp = spanBounds.top + (spanBounds.height / 2 - tooltipBounds.height / 2);
+            vp = anchorBounds.top + (anchorBounds.height / 2 - tooltipBounds.height / 2);
         }
 
         return {
@@ -56,17 +56,23 @@ const position = computed(() => {
 </script>
 
 <template>
-    <span
-        ref="spanElement"
-        class="text-blue-600 hover:text-blue-500"
+    <a
+        ref="anchorElement"
+        :class="`text-blue-600 hover:text-blue-500 whitespace-nowrap ${link ? 'cursor-pointer' : ''}`"
         :href="link"
         :target="openInNewTab ? '_blank' : '_self'"
         @mouseover="showingTooltip = true"
         @mouseleave="showingTooltip = false"
     >
         {{ text }}
-    </span>
+        <i
+            :class="`${
+                link && openInNewTab ? 'inline-block' : 'hidden'
+            } fa-solid fa-arrow-up-right-from-square text-md`"
+        ></i>
+    </a>
     <div
+        v-if="$slots.default"
         ref="tooltipElement"
         class="absolute bg-white p-2 pointer-events-none border-black border-2 rounded-md"
         :style="{
@@ -75,6 +81,6 @@ const position = computed(() => {
             top: `${position?.verticalPosition ?? 0}px`
         }"
     >
-        <slot>Aba</slot>
+        <slot></slot>
     </div>
 </template>
