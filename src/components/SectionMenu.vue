@@ -7,7 +7,6 @@ import Work from "@/components/sections/Work.vue";
 import Skills from "@/components/sections/Skills.vue";
 import Projects from "@/components/sections/Projects.vue";
 import Qualifications from "@/components/sections/Qualifications.vue";
-import { profile } from "console";
 
 const focusedSection = ref<number | undefined>();
 
@@ -68,17 +67,17 @@ const portfolioSections: PortfolioSection[] = [
         <Transition
             enter-active-class="animate__animated animate__fadeInLeftBig"
         >
-            <div
+            <section
                 class="bg-white rounded text-black p-8 h-full w-full"
                 :key="focusedSection"
             >
-                <h3 class="block lg:hidden">
+                <h3 class="block lg:hidden text-xl font-bold mb-3">
                     {{ portfolioSections[focusedSection].name }}
                 </h3>
                 <component
                     :is="portfolioSections[focusedSection].component"
                 ></component>
-            </div>
+            </section>
         </Transition>
     </div>
     <div v-else>
