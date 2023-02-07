@@ -64,8 +64,8 @@ const position = computed(() => {
         @mouseover="showingTooltip = true"
         @mouseleave="showingTooltip = false"
     >
-        {{ text }}
-        <i
+        {{ text }}{{ link && openInNewTab ? " " : ""
+        }}<i
             :class="`${
                 link && openInNewTab ? 'inline-block' : 'hidden'
             } fa-solid fa-arrow-up-right-from-square text-md`"
