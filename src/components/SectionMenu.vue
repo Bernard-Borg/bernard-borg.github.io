@@ -2,8 +2,7 @@
 import { type Component, ref } from "vue";
 import SectionMenuItem from "@/components/SectionMenuItem.vue";
 import AboutMe from "@/components/sections/AboutMe.vue";
-import Education from "@/components/sections/Education.vue";
-import Work from "@/components/sections/Work.vue";
+import Career from "@/components/sections/Career.vue";
 import Skills from "@/components/sections/Skills.vue";
 import Projects from "@/components/sections/Projects.vue";
 import Qualifications from "@/components/sections/Qualifications.vue";
@@ -23,14 +22,9 @@ const portfolioSections: PortfolioSection[] = [
         component: AboutMe
     },
     {
-        name: "Education",
-        icon: "fa-solid fa-graduation-cap",
-        component: Education
-    },
-    {
-        name: "Work",
+        name: "Career",
         icon: "fa-solid fa-laptop-code",
-        component: Work
+        component: Career
     },
     {
         name: "Skills",
@@ -64,19 +58,12 @@ const portfolioSections: PortfolioSection[] = [
         </ul>
     </nav>
     <div v-if="focusedSection !== undefined" class="col-span-2 flex">
-        <Transition
-            enter-active-class="animate__animated animate__fadeInLeftBig"
-        >
-            <section
-                class="bg-white rounded text-black p-8 h-full w-full"
-                :key="focusedSection"
-            >
+        <Transition enter-active-class="animate__animated animate__fadeInLeftBig">
+            <section class="bg-white rounded text-black p-8 h-full w-full" :key="focusedSection">
                 <h3 class="block lg:hidden text-xl font-bold mb-3">
                     {{ portfolioSections[focusedSection].name }}
                 </h3>
-                <component
-                    :is="portfolioSections[focusedSection].component"
-                ></component>
+                <component :is="portfolioSections[focusedSection].component"></component>
             </section>
         </Transition>
     </div>
