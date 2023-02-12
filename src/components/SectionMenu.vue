@@ -3,7 +3,7 @@ import { type Component, ref } from "vue";
 import SectionMenuItem from "@/components/SectionMenuItem.vue";
 import AboutMe from "@/components/sections/AboutMe.vue";
 import Career from "@/components/sections/Career.vue";
-import Skills from "@/components/sections/Skills.vue";
+import Research from "@/components/sections/Research.vue";
 import Projects from "@/components/sections/Projects.vue";
 import Qualifications from "@/components/sections/Qualifications.vue";
 
@@ -27,9 +27,9 @@ const portfolioSections: PortfolioSection[] = [
         component: Career
     },
     {
-        name: "Skills",
-        icon: "fa-solid fa-arrow-trend-up",
-        component: Skills
+        name: "Research",
+        icon: "fa-solid fa-book",
+        component: Research
     },
     {
         name: "Projects",

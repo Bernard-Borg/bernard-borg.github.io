@@ -1,3 +1,9 @@
+export type Skill = {
+    name: string;
+    type: "Language" | "Library" | "Framework" | "Tool" | "API" | "Database" | "Other";
+    familiarity: "Expert" | "Advanced" | "Intermediate" | "Novice" | "Basic";
+};
+
 export type CareerPosition = {
     title: string;
     type: "Internship" | "Part-time" | "Full-time";
@@ -10,11 +16,6 @@ export type Testimonial = {
     name: string;
     quote: string;
     signature?: string;
-};
-
-export type Skill = {
-    name: string;
-    type: "Language" | "Library" | "Framework" | "Tool" | "API" | "Database" | "Other";
 };
 
 export type CareerRecord = {
@@ -55,22 +56,22 @@ const careerHistory: CareerRecord[] = [
             }
         ],
         skills: [
-            { name: "Vue 3", type: "Framework" },
-            { name: "CSS", type: "Language" },
-            { name: "SASS", type: "Language" },
-            { name: "JavaScript", type: "Language" },
-            { name: "TypeScript", type: "Language" },
-            { name: "C#", type: "Language" },
-            { name: "Visual Basic", type: "Language" },
-            { name: ".NET Core 6", type: "Framework" },
-            { name: "DevExpress + DevExtreme", type: "Library" },
-            { name: "Bootstrap 5", type: "Library" },
-            { name: "Microsoft SQL Server", type: "Database" },
-            { name: "DevOps", type: "Tool" },
-            { name: "Git", type: "Tool" },
-            { name: "Yarn", type: "Tool" },
-            { name: "npm", type: "Tool" },
-            { name: "Vite", type: "Tool" }
+            { name: "Vue 3", type: "Framework", familiarity: "Expert" },
+            { name: "CSS", type: "Language", familiarity: "Advanced" },
+            { name: "SASS", type: "Language", familiarity: "Novice" },
+            { name: "JavaScript", type: "Language", familiarity: "Advanced" },
+            { name: "TypeScript", type: "Language", familiarity: "Intermediate" },
+            { name: "C#", type: "Language", familiarity: "Advanced" },
+            { name: "Visual Basic", type: "Language", familiarity: "Basic" },
+            { name: ".NET Core 6", type: "Framework", familiarity: "Intermediate" },
+            { name: "DevExpress + DevExtreme", type: "Library", familiarity: "Intermediate" },
+            { name: "Bootstrap 5", type: "Library", familiarity: "Advanced" },
+            { name: "Microsoft SQL Server", type: "Database", familiarity: "Intermediate" },
+            { name: "DevOps", type: "Tool", familiarity: "Intermediate" },
+            { name: "Git", type: "Tool", familiarity: "Advanced" },
+            { name: "Yarn", type: "Tool", familiarity: "Intermediate" },
+            { name: "npm", type: "Tool", familiarity: "Intermediate" },
+            { name: "Vite", type: "Tool", familiarity: "Intermediate" }
         ],
         location: "Mosta Technopark, Malta"
     },
@@ -90,12 +91,12 @@ const careerHistory: CareerRecord[] = [
             }
         ],
         skills: [
-            { name: "PHP", type: "Language" },
-            { name: "HTML", type: "Language" },
-            { name: "CSS", type: "Language" },
-            { name: "FileZilla", type: "Tool" },
-            { name: "WordPress", type: "Other" },
-            { name: "Microsoft Office", type: "Other" }
+            { name: "PHP", type: "Language", familiarity: "Novice" },
+            { name: "HTML", type: "Language", familiarity: "Advanced" },
+            { name: "CSS", type: "Language", familiarity: "Advanced" },
+            { name: "FileZilla", type: "Tool", familiarity: "Intermediate" },
+            { name: "WordPress", type: "Other", familiarity: "Intermediate" },
+            { name: "Microsoft Office", type: "Other", familiarity: "Advanced" }
         ],
         location: "Msida, Malta"
     }
