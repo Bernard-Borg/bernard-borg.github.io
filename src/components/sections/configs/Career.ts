@@ -35,7 +35,6 @@ const careerHistory: CareerRecord[] = [
                 startDate: new Date("09/01/2022"),
                 description: [
                     "Maintained a legacy codebase written in VB.NET and another legacy system written in .NET Framework 4 (C#)",
-                    "Studied the entire documentation of Vue 3 (specifically, with the composition API)",
                     "Added new features and performed refactoring on an ongoing Vue + .NET 6 project",
                     "Added new features to a PWA mobile application written in JavaScript",
                     "Designed, implemented and documented (through DevOps) the front-end of a large-scale project (Vue 3 + Vite + Pinia + Typescript + Bootstrap 5 + SASS) and assisted in the design and implementation of the back-end (.NET + C#) and its integration with the front-end and an Oracle database",

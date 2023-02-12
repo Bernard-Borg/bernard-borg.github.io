@@ -5,14 +5,10 @@
             <a
                 class="pointer-events-auto rounded-md bg-blue-600 py-2 px-3 text-[0.8125rem] font-semibold leading-5 text-white hover:bg-blue-500"
                 href="mailto:bernard.borg36@gmail.com"
-                >Contact</a
             >
-            <a
-                href="https://github.com/Bernard-Borg/"
-                target="_blank"
-                class="hover:scale-110"
-                aria-label="Github link"
-            >
+                Contact
+            </a>
+            <a href="https://github.com/Bernard-Borg/" target="_blank" class="hover:scale-110" aria-label="Github link">
                 <i class="fa-brands fa-github"></i>
             </a>
             <a
