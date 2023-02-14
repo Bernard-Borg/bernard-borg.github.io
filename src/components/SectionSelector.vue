@@ -39,11 +39,7 @@ const isFocused = computed(() => props.focusedSection === props.sectionId);
         enter-active-class="animate__animated animate__fadeIn"
         leave-active-class="animate__animated animate__fadeOut"
     >
-        <div
-            v-if="isFocused"
-            class="fixed top-0 right-0 left-0 backdrop-blur-md"
-            style="height: 100vh; z-index: 100"
-        >
+        <div v-if="isFocused" class="fixed top-0 right-0 left-0 backdrop-blur-md" style="height: 100vh; z-index: 100">
             <div
                 ref="card"
                 class="box-border flex flex-col bg-white text-black rounded p-8 transition-transform gap-y-3 m-12 shadow-xl shadow-stone-500"

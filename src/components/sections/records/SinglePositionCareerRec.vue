@@ -16,7 +16,7 @@ const { toggleAccordion, visible } = useAccordion(accordionContent);
 
 <template>
     <div class="flex flex-col">
-        <div class="flex justify-between">
+        <div class="flex flex-col md:flex-row justify-between">
             <div class="flex flex-col">
                 <div class="flex items-center">
                     <span class="text-lg font-bold">{{ careerRecord.company }}</span>
@@ -36,7 +36,7 @@ const { toggleAccordion, visible } = useAccordion(accordionContent);
                     {{ formatDate(careerRecord.positions[0].endDate) }}
                 </span>
             </div>
-            <div class="flex items-center justify-end mr-5">
+            <div class="flex gap-x-3 md:gap-x-0 items-center justify-end mt-3 md:mt-0 md:mr-5">
                 <CareerLink v-if="careerRecord.skills" text="Skills" class="w-24" />
                 <CareerLink
                     v-if="careerRecord.positions[0].description"
@@ -47,7 +47,7 @@ const { toggleAccordion, visible } = useAccordion(accordionContent);
             </div>
         </div>
         <div class="flex flex-col accordion" ref="accordionContent">
-            <ul v-if="careerRecord.positions[0].description" class="list-disc ml-10 mt-3">
+            <ul v-if="careerRecord.positions[0].description" class="list-disc ml-5 md:ml-10 mt-3">
                 <li v-for="(positionDescription, i) in careerRecord.positions[0].description" :key="i">
                     {{ positionDescription }}
                 </li>

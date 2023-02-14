@@ -30,9 +30,7 @@ const clickPicture = () => {
 <template>
     <Socials />
     <div class="flex flex-col mb-10">
-        <div
-            class="flex flex-col items-center md:flex-row w-full justify-evenly mt-20 pb-10"
-        >
+        <div class="flex flex-col items-center md:flex-row w-full justify-evenly mt-20 pb-10">
             <img
                 ref="profilePicture"
                 id="profilePicture"
@@ -54,14 +52,7 @@ const clickPicture = () => {
                 </h2>
             </div>
         </div>
-        <!-- <div
-            class="w-3/4 border-solid border-b-2 border-white rounded mx-auto"
-        ></div> -->
-        <div
-            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 pt-10 px-12 gap-16"
-        >
-            <SectionMenu />
-        </div>
+        <SectionMenu />
     </div>
 </template>
 

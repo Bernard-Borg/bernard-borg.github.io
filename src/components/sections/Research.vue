@@ -1,22 +1,6 @@
 <script setup lang="ts">
 import CareerLink from "@/components/CareerLink.vue";
-
-type Author = {
-    name: string;
-    link?: string;
-};
-
-type ResearchRecord = {
-    title: string;
-    authors: Author[];
-};
-
-const researchHistory: ResearchRecord[] = [
-    {
-        title: "Driver Drowsiness Detection",
-        authors: [{ name: "Bernard Borg" }, { name: "Lalit Garg", link: "http://lalitgarg.info/" }]
-    }
-];
+import researchHistory from "@/data/Research";
 </script>
 
 <template>
@@ -40,7 +24,7 @@ const researchHistory: ResearchRecord[] = [
                     </component>
                 </span>
             </div>
-            <CareerLink text="View Paper" class="mr-5" />
+            <CareerLink text="View Paper" class="md:mr-5" />
         </div>
     </div>
 </template>

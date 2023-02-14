@@ -21,9 +21,9 @@ const { toggleAccordion, visible } = useAccordion(accordionContent);
         <div class="w-10 h-4 border-l border-b border-dashed border-gray-500"></div>
         <div v-if="index < careerRecordPositions - 1" class="w-10 h-full border-l border-dashed border-gray-500"></div>
     </div>
-    <div class="flex flex-col w-full">
-        <div class="flex justify-between w-full">
-            <div class="h-20 flex flex-col">
+    <div class="flex flex-col w-full mb-3">
+        <div class="flex flex-col md:flex-row justify-between w-full">
+            <div class="flex flex-col">
                 <span class="font-bold">{{ careerPosition.title }}</span>
                 <span class="text-md text-gray-600">{{ careerPosition.type }}</span>
                 <span class="text-sm text-gray-500">
@@ -31,7 +31,7 @@ const { toggleAccordion, visible } = useAccordion(accordionContent);
                     {{ formatDate(careerPosition.endDate) }}
                 </span>
             </div>
-            <div class="flex items-center justify-end mr-5">
+            <div class="flex items-center justify-end mt-3 md:mt-0 md:mr-5">
                 <CareerLink
                     v-if="careerPosition.description"
                     :text="visible ? 'Hide' : 'Details'"
@@ -41,7 +41,7 @@ const { toggleAccordion, visible } = useAccordion(accordionContent);
             </div>
         </div>
         <div class="flex flex-col accordion" ref="accordionContent">
-            <ul v-if="careerPosition.description" class="list-disc ml-10 my-4">
+            <ul v-if="careerPosition.description" class="list-disc ml-5 md:ml-10 my-4">
                 <li v-for="(positionDescription, i) in careerPosition.description" :key="i">
                     {{ positionDescription }}
                 </li>

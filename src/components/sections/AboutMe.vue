@@ -12,7 +12,7 @@ const yearsOfLearning = computed(() => {
 </script>
 
 <template>
-    <p class="text-lg leading-7 text-justify mb-3" ref="paragraph">
+    <p class="text-md md:text-lg leading-7 md:text-justify mb-3" ref="paragraph">
         Hello! My name is <b>Bernard Borg</b>. I'm a {{ age }}-year-old Fullstack Software Developer from
         <HoverLink
             text="Malta"
@@ -34,7 +34,7 @@ const yearsOfLearning = computed(() => {
         for my MATSEC A-level project (which I completed through private lessons, while studying Chemistry and Pure
         Mathematics for my A-levels).
     </p>
-    <p class="text-lg leading-7 text-justify mb-3">
+    <p class="text-md md:text-lg leading-7 md:text-justify mb-3">
         Later on, I started completing online courses on various technologies, namely Java and Kotlin (through
         <HoverLink text="Hyperskill.org" link="https://hyperskill.org/tracks" :openInNewTab="true" />, which I can't
         recommend enough), as well as Javascript, HTML, CSS, Python and React (initially through
@@ -43,7 +43,7 @@ const yearsOfLearning = computed(() => {
             ><img src="/freeCodeCampCert.png" class="w-96" /></HoverLink
         >).
     </p>
-    <p class="text-lg leading-7 text-justify mb-3">
+    <p class="text-md md:text-lg leading-7 md:text-justify mb-3">
         During this time, I was also in the process of getting my Bachelor of Science in IT (Software Development) degree
         at the University of Malta, while also being part of multiple student placement internships. I have now graduated with a
         first-class honours and am working full-time at <HoverLink text="Megabyte" link="https://www.megabyte.net/" :openInNewTab="true">
@@ -54,13 +54,13 @@ const yearsOfLearning = computed(() => {
         and love to create some <HoverLink text="personal projects" link="https://github.com/Bernard-Borg/" :openInNewTab="true"></HoverLink> 
         when I'm bored.
     </p>
-    <p class="text-lg leading-7 text-justify mb-3">Currently enjoying the following technologies;</p>
-    <ul class="list-disc ml-10 text-lg mb-3">
+    <p class="text-md md:text-lg leading-7 md:text-justify mb-3">Currently enjoying the following technologies;</p>
+    <ul class="list-disc ml-10 text-md md:text-lg mb-3">
         <li>Vue 3 (Composition API with <span class="font-mono" style="color: #1e50b3">{{ '<script setup>' }}</span> + Pinia + Vite)</li>
         <li>TailwindCSS</li>
         <li>.NET Core 6</li>
     </ul>
-    <p class="text-lg leading-7 text-justify mb-3">
+    <p class="text-md md:text-lg leading-7 md:text-justify mb-3">
         In my free time, I enjoy learning about new technologies by creating personal projects and reading about UI/UX design. Moreover, I <HoverLink text="play the trumpet" /> with the Count Roger Band of Rabat and enjoy playing <HoverLink text="video games" />, listening to music and travelling. I'm also interested in Typography (did you notice that I love the font Inter?) and drawing.
     </p>
 </template>
