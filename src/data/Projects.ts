@@ -1,5 +1,6 @@
 export type Project = {
     name: string;
+    shortDescription?: string;
     previewImage?: string;
     liveLink?: string;
     githubLink?: string;
@@ -22,6 +23,7 @@ const projectsList: Project[] = [
     {
         name: "VideoVish",
         liveLink: "https://github.com/Bernard-Borg/VideOVish/releases",
+        previewImage: "/VideoVish.png",
         downloadable: true,
         githubLink: "https://github.com/Bernard-Borg/VideoVish",
         learningOutcomes: [
