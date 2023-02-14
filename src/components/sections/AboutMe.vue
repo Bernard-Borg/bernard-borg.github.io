@@ -61,7 +61,12 @@ const yearsOfLearning = computed(() => {
         <li>.NET Core 6</li>
     </ul>
     <p class="text-md md:text-lg leading-7 md:text-justify mb-3">
-        In my free time, I enjoy learning about new technologies by creating personal projects and reading about UI/UX design. Moreover, I <HoverLink text="play the trumpet" /> with the Count Roger Band of Rabat and enjoy playing <HoverLink text="video games" />, listening to music and travelling. I'm also interested in Typography (did you notice that I love the font Inter?) and drawing.
+        In my free time, I enjoy learning about new technologies by creating personal projects and reading about UI/UX design. Moreover, I play the trumpet with the Count Roger Band of Rabat and enjoy playing <HoverLink text="video games" />, spending time with my 
+        <HoverLink text="two cats">
+            <div class="grid grid-cols-2 w-[300px]">
+            <img src="/Rubee.jpg" class="h-full object-cover" alt="Rubee"><img src="/Peanut.png" class="h-full object-cover" alt="Peanut">
+            <span>Rubee</span><span>Peanut</span>
+        </div></HoverLink>, listening to music and travelling. I'm also interested in Typography (did you notice that I love the font Inter?) and drawing.
     </p>
 </template>
 
