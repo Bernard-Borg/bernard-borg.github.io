@@ -35,7 +35,7 @@ import projectsList from "@/data/Projects";
                 </div>
             </div>
             <div v-if="project.previewImage"><img :src="project.previewImage" /></div>
-            <div v-else class="flex items-center justify-center">Preview unavailable</div>
+            <div v-else class="flex items-center justify-center min-h-[150px]">Preview unavailable</div>
             <div class="bg-white text-sm p-3">
                 <span v-if="project.learningOutcomes">
                     <b>Learning outcomes:</b> {{ project.learningOutcomes?.join(", ") }}

@@ -15,6 +15,7 @@ export type CareerPosition = {
 export type Testimonial = {
     name: string;
     quote: string;
+    workplace: string;
     signature?: string;
 };
 
@@ -23,7 +24,6 @@ export type CareerRecord = {
     positions: Array<CareerPosition>;
     skills?: Array<Skill>;
     location?: string;
-    testimonials?: Array<Testimonial>;
 };
 
 const careerHistory: CareerRecord[] = [
@@ -102,4 +102,12 @@ const careerHistory: CareerRecord[] = [
     }
 ];
 
-export default careerHistory;
+const testimonials: Array<Testimonial> = [
+    {
+        name: "Test",
+        quote: "Aba",
+        workplace: "Megabajd"
+    }
+];
+
+export { careerHistory, testimonials };
