@@ -11,21 +11,36 @@ import projectsList from "@/data/Projects";
             <div class="flex bg-white items-center p-3 justify-between">
                 <span class="text-lg font-bold bg-white">{{ project.name }}</span>
                 <div class="flex gap-x-2">
-                    <a v-if="project.downloadable" :href="project.liveLink" target="_blank">
+                    <a
+                        v-if="project.downloadable"
+                        :href="project.liveLink"
+                        target="_blank"
+                        aria-label="Download button"
+                    >
                         <span
                             class="flex items-center justify-center p-2 h-[30px] aspect-square rounded-md bg-green-400 hover:bg-green-500"
                         >
                             <i class="fa-solid fa-download text-sm" aria-hidden="true"></i>
                         </span>
                     </a>
-                    <a v-else-if="project.liveLink" :href="project.liveLink" target="_blank">
+                    <a
+                        v-else-if="project.liveLink"
+                        :href="project.liveLink"
+                        target="_blank"
+                        aria-label="Link to hosted project"
+                    >
                         <span
                             class="flex items-center justify-center p-2 h-[30px] aspect-square rounded-md bg-blue-600 hover:bg-blue-500"
                         >
-                            <i class="fa-solid fa-link text-white text-xs"></i>
+                            <i class="fa-solid fa-link text-white text-xs" aria-hidden="true"></i>
                         </span>
                     </a>
-                    <a v-if="project.githubLink" :href="project.githubLink" target="_blank">
+                    <a
+                        v-if="project.githubLink"
+                        :href="project.githubLink"
+                        target="_blank"
+                        aria-label="Link to project Github Page"
+                    >
                         <span
                             class="flex items-center justify-center p-2 h-[30px] aspect-square rounded-md bg-gray-800 hover:bg-gray-700"
                         >
@@ -34,7 +49,9 @@ import projectsList from "@/data/Projects";
                     </a>
                 </div>
             </div>
-            <div v-if="project.previewImage"><img :src="project.previewImage" /></div>
+            <div v-if="project.previewImage">
+                <img :src="project.previewImage" :alt="`Image of project ${project.name}`" />
+            </div>
             <div v-else class="flex items-center justify-center min-h-[150px]">Preview unavailable</div>
             <div class="bg-white text-sm p-3">
                 <span v-if="project.learningOutcomes">
