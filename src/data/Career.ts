@@ -104,8 +104,8 @@ const careerHistory: CareerRecord[] = [
 
 const testimonials: Array<Testimonial> = [
     {
-        name: "Test",
-        quote: "Aba",
+        name: "Spinning Seal",
+        quote: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero minima ex assumenda, doloribus quisquam accusantium provident iure itaque sequi placeat. Consectetur dignissimos consequuntur quasi nisi corrupti rerum nulla fugit.",
         workplace: "Megabajd"
     }
 ];

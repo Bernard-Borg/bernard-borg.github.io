@@ -28,32 +28,36 @@ const clickPicture = () => {
 </script>
 
 <template>
-    <Socials />
-    <div class="flex flex-col mb-10">
-        <div class="flex flex-col items-center md:flex-row w-full justify-evenly mt-20 pb-10">
-            <img
-                ref="profilePicture"
-                id="profilePicture"
-                alt="Picture of Bernard Borg"
-                class="rounded-full aspect-square object-cover animate__animated transition-all duration-300"
-                src="/image.jpg"
-                @click="clickPicture"
-            />
-            <div class="flex flex-col justify-center mt-10 md:mt-0">
-                <h1
-                    class="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-center md:text-left transition-all duration-300"
-                >
-                    Bernard Borg
-                </h1>
-                <h2
-                    class="text-xl md:text-3xl lg:text-4xl xl:text-5xl font-thin text-center md:text-left transition-all duration-300"
-                >
-                    Fullstack Software Developer
-                </h2>
+    <header>
+        <Socials />
+    </header>
+    <main>
+        <div class="flex flex-col mb-10">
+            <div class="flex flex-col items-center md:flex-row w-full justify-evenly mt-20 pb-10">
+                <img
+                    ref="profilePicture"
+                    id="profilePicture"
+                    alt="Picture of Bernard Borg"
+                    class="rounded-full aspect-square object-cover animate__animated transition-all duration-300"
+                    src="/image.jpg"
+                    @click="clickPicture"
+                />
+                <div class="flex flex-col justify-center mt-10 md:mt-0">
+                    <h1
+                        class="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-center md:text-left transition-all duration-300"
+                    >
+                        Bernard Borg
+                    </h1>
+                    <h2
+                        class="text-xl md:text-3xl lg:text-4xl xl:text-5xl font-thin text-center md:text-left transition-all duration-300"
+                    >
+                        Fullstack Software Developer
+                    </h2>
+                </div>
             </div>
+            <SectionMenu />
         </div>
-        <SectionMenu />
-    </div>
+    </main>
 </template>
 
 <style>
