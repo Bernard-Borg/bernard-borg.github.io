@@ -58,6 +58,12 @@ const clickPicture = () => {
             <SectionMenu />
         </div>
     </main>
+    <footer class="text-center gap-y-1 pt-6 pb-8">
+        <span class="text-sm">
+            Handcrafted by yours truly <i class="fa-regular fa-copyright" aria-hidden="true"></i>
+            {{ new Date().getFullYear() }}
+        </span>
+    </footer>
 </template>
 
 <style>

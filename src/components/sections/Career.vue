@@ -25,19 +25,24 @@ const testimonialsShown = ref<boolean>(false);
         >
             {{ testimonialsShown ? "Hide" : "Show" }} Testimonials
         </button>
-        <div v-if="testimonialsShown" class="mt-6 w-full flex justify-center">
-            <div
-                v-for="(testimonial, i) in testimonials"
-                class="flex flex-col w-[300px] outline outline-black outline-1 rounded-md p-3"
-                style="box-shadow: 5px 6px 6px 0px grey"
-            >
-                <i class="fa fa-quote-left text-3xl" aria-hidden="true"></i>
-                <span class="text-center font-light">{{ testimonial.quote }}</span>
-                <div class="flex flex-col w-full items-end mt-3">
-                    <span class="text-md font-bold">{{ testimonial.name }}</span>
-                    <span class="text-sm">{{ testimonial.workplace }}</span>
+        <Transition
+            enterActiveClass="animate__animated animate__fadeIn"
+            leaveActiveClass="animate__animated animate__fadeOut"
+        >
+            <div v-if="testimonialsShown" class="mt-6 w-full flex justify-center">
+                <div
+                    v-for="(testimonial, i) in testimonials"
+                    class="flex flex-col w-[300px] outline outline-black outline-1 rounded-md p-3"
+                    style="box-shadow: 5px 6px 6px 0px grey"
+                >
+                    <i class="fa fa-quote-left text-3xl" aria-hidden="true"></i>
+                    <span class="text-center font-light">{{ testimonial.quote }}</span>
+                    <div class="flex flex-col w-full items-end mt-3">
+                        <span class="text-md font-bold">{{ testimonial.name }}</span>
+                        <span class="text-sm">{{ testimonial.workplace }}</span>
+                    </div>
                 </div>
             </div>
-        </div>
+        </Transition>
     </div>
 </template>
