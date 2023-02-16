@@ -7,7 +7,7 @@ import Research from "@/components/sections/Research.vue";
 import Projects from "@/components/sections/Projects.vue";
 import Qualifications from "@/components/sections/Qualifications.vue";
 
-const focusedSection = ref<number | undefined>();
+const focusedSection = ref<number | undefined>(0);
 
 interface PortfolioSection {
     name: string;
@@ -45,9 +45,9 @@ const portfolioSections: PortfolioSection[] = [
 </script>
 
 <template>
-    <div class="flex flex-col lg:grid grid-cols-1 lg:grid-cols-3 pt-10 px-0 md:px-12 gap-0 md:gap-8 lg:gap-16">
+    <div class="flex flex-col pt-10 px-0 md:px-12 gap-0 md:gap-3">
         <nav>
-            <ul class="flex flex-row lg:flex-col md:gap-x-3 lg:gap-x-0 lg:gap-y-5">
+            <ul class="flex flex-row md:gap-x-3">
                 <SectionMenuItem
                     v-for="(section, i) in portfolioSections"
                     :key="i"
@@ -61,7 +61,7 @@ const portfolioSections: PortfolioSection[] = [
         <div v-if="focusedSection !== undefined" class="col-span-2 flex">
             <Transition enter-active-class="animate__animated animate__fadeInLeftBig">
                 <section
-                    class="md:rounded text-black p-8 h-full w-full"
+                    class="md:rounded text-black p-8 h-full w-full min-h-[500px]"
                     :key="focusedSection"
                     style="background: var(--opaque-white, #ffffff)"
                 >

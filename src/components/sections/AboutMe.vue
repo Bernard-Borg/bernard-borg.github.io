@@ -25,7 +25,7 @@ const yearsOfLearning = computed(() => {
                 src="/malta.svg"
                 title="Maltese flag"
                 height="50px"
-            /> </HoverLink
+            /></HoverLink
         >. I have been learning Computing/Software Development for the past {{ yearsOfLearning }} years. My journey into
         the world of software started out with a love for Java. The first thing I got obsessed with was JOptionPanes. I
         used to make use of them in all my projects. Soon after, I learnt about more advanced GUI technologies such as
