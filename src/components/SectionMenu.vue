@@ -47,7 +47,7 @@ const portfolioSections: PortfolioSection[] = [
 <template>
     <div class="flex flex-col pt-10 px-0 md:px-12 gap-0 md:gap-3">
         <nav>
-            <ul class="flex flex-row md:gap-x-3">
+            <ul class="flex md:gap-x-3">
                 <SectionMenuItem
                     v-for="(section, i) in portfolioSections"
                     :key="i"
@@ -58,7 +58,7 @@ const portfolioSections: PortfolioSection[] = [
                 />
             </ul>
         </nav>
-        <div v-if="focusedSection !== undefined" class="col-span-2 flex">
+        <div v-if="focusedSection !== undefined" class="flex">
             <Transition enter-active-class="animate__animated animate__fadeInLeftBig">
                 <section
                     class="md:rounded text-black p-8 h-full w-full min-h-[500px]"
@@ -71,9 +71,6 @@ const portfolioSections: PortfolioSection[] = [
                     <component :is="portfolioSections[focusedSection].component"></component>
                 </section>
             </Transition>
-        </div>
-        <div v-else>
-            <div>Aba</div>
         </div>
     </div>
 </template>
