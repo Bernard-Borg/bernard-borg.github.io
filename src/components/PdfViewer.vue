@@ -63,7 +63,7 @@ onMounted(() => {
                 <span></span>
             </template>
         </div>
-        <div class="pdf-viewer-content overflow-hidden w-[900px] my-0 mx-auto">
+        <div class="pdf-viewer-content overflow-hidden max-w-[900px] my-0 mx-auto">
             <div class="pdf-content">
                 <vue-pdf-embed ref="pdfRef" :source="pdfBase64" :page="page" @rendered="handleDocumentRender" />
             </div>

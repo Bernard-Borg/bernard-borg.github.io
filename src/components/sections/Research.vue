@@ -36,7 +36,7 @@ const viewPdf = () => {
                 class="bg-blue-600 hover:bg-blue-500 max-h-[40px] rounded-md text-white text-sm font-bold p-2 md:mr-5"
                 @click="viewPdf"
             >
-                View Paper
+                View
             </button>
         </div>
     </div>
