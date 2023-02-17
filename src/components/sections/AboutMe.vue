@@ -22,7 +22,7 @@ const yearsOfLearning = computed(() => {
             <inline-svg
                 id="maltese-flag"
                 class="inline"
-                src="/images/malta.svg"
+                src="/svgs/malta.svg"
                 title="Maltese flag"
                 height="50px"
             /></HoverLink
