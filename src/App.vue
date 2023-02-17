@@ -143,24 +143,26 @@ const clickPicture = () => {
 
     20%,
     60% {
-        -webkit-transform: rotate3d(0, 0, 1, 80deg);
-        transform: rotate3d(0, 0, 1, 80deg);
+        -webkit-transform: rotate3d(0, 0, 1, -60deg);
+        transform: rotate3d(0, 0, 1, -60deg);
         -webkit-animation-timing-function: ease-in-out;
         animation-timing-function: ease-in-out;
+        transform-origin: top right;
     }
 
     40%,
     80% {
-        -webkit-transform: rotate3d(0, 0, 1, 60deg);
-        transform: rotate3d(0, 0, 1, 60deg);
+        -webkit-transform: rotate3d(0, 0, 1, -40deg);
+        transform: rotate3d(0, 0, 1, -40deg);
         -webkit-animation-timing-function: ease-in-out;
         animation-timing-function: ease-in-out;
+        transform-origin: top right;
         opacity: 1;
     }
 
     to {
-        -webkit-transform: translate3d(0, 700px, 0);
-        transform: translate3d(0, 700px, 0);
+        -webkit-transform: translate3d(0, 800px, 0);
+        transform: translate3d(200px, 1000px, 0);
         opacity: 0;
     }
 }
@@ -173,24 +175,26 @@ const clickPicture = () => {
 
     20%,
     60% {
-        -webkit-transform: rotate3d(0, 0, 1, 80deg);
-        transform: rotate3d(0, 0, 1, 80deg);
+        -webkit-transform: rotate3d(0, 0, 1, -60deg);
+        transform: rotate3d(0, 0, 1, -60deg);
+        transform-origin: top right;
         -webkit-animation-timing-function: ease-in-out;
         animation-timing-function: ease-in-out;
     }
 
     40%,
     80% {
-        -webkit-transform: rotate3d(0, 0, 1, 60deg);
-        transform: rotate3d(0, 0, 1, 60deg);
+        -webkit-transform: rotate3d(0, 0, 1, -40deg);
+        transform: rotate3d(0, 0, 1, -40deg);
+        transform-origin: top right;
         -webkit-animation-timing-function: ease-in-out;
         animation-timing-function: ease-in-out;
         opacity: 1;
     }
 
     to {
-        -webkit-transform: translate3d(0, 700px, 0);
-        transform: translate3d(-200px, 700px, 0);
+        -webkit-transform: translate3d(0, 800px, 0);
+        transform: translate3d(200px, 1000px, 0);
         opacity: 0;
     }
 }
