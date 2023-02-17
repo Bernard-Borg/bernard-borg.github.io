@@ -1,6 +1,14 @@
 <script setup lang="ts">
-import CareerLink from "@/components/CareerLink.vue";
 import researchHistory from "@/data/Research";
+import { inject, Ref } from "vue";
+
+const viewingPdf = inject<Ref<boolean>>("viewingPDF");
+
+const viewPdf = () => {
+    if (viewingPdf) {
+        viewingPdf.value = true;
+    }
+};
 </script>
 
 <template>
@@ -24,7 +32,12 @@ import researchHistory from "@/data/Research";
                     </component>
                 </span>
             </div>
-            <CareerLink text="View Paper" class="md:mr-5" />
+            <button
+                class="bg-blue-600 hover:bg-blue-500 max-h-[40px] rounded-md text-white text-sm font-bold p-2 md:mr-5"
+                @click="viewPdf"
+            >
+                View Paper
+            </button>
         </div>
     </div>
 </template>

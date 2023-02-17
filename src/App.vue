@@ -1,16 +1,19 @@
 <script setup lang="ts">
 import "animate.css";
 import { useTimeoutFn } from "@vueuse/shared";
-import { ref } from "vue";
+import { inject, Ref, ref } from "vue";
 import SectionMenu from "@/components/SectionMenu.vue";
 import Socials from "@/components/Socials.vue";
 import { useSound } from "@vueuse/sound";
 import hitSfx from "@/assets/sounds/hit.mp3";
 import hitDownSfx from "@/assets/sounds/hit-down.mp3";
+import PdfViewer from "@/components/PdfViewer.vue";
 
 const clickCounter = ref<number>(0);
 const profilePicture = ref<HTMLImageElement>();
 const bringMeBack = ref<boolean>(false);
+
+const viewingPdf = inject<Ref<boolean>>("viewingPDF");
 
 const { play: playHit } = useSound(hitSfx, { volume: 0.5 });
 const { play: playHitDown } = useSound(hitDownSfx, { volume: 0.5 });
@@ -47,52 +50,57 @@ const clickPicture = () => {
 </script>
 
 <template>
-    <header>
-        <Socials />
-    </header>
-    <main>
-        <div class="flex flex-col mb-10">
-            <div class="flex flex-col items-center md:flex-row w-full justify-evenly mt-20 pb-10">
-                <div class="relative rounded-full" id="profilePicture">
-                    <img
-                        ref="profilePicture"
-                        alt="Picture of Bernard Borg"
-                        class="rounded-full aspect-square object-cover animate__animated transition-all duration-300"
-                        src="/images/image.jpg"
-                        @click="clickPicture"
-                    />
-                    <Transition enterActiveClass="animate__animated animate__fadeIn">
-                        <button
-                            v-if="bringMeBack"
-                            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center bg-white text-black p-3 rounded-lg"
-                            @click="bringBack"
+    <template v-if="!viewingPdf">
+        <header>
+            <Socials />
+        </header>
+        <main>
+            <div class="flex flex-col mb-10">
+                <div class="flex flex-col items-center md:flex-row w-full justify-evenly mt-20 pb-10">
+                    <div class="relative rounded-full" id="profilePicture">
+                        <img
+                            ref="profilePicture"
+                            alt="Picture of Bernard Borg"
+                            class="rounded-full aspect-square object-cover animate__animated transition-all duration-300"
+                            src="/images/image.jpg"
+                            @click="clickPicture"
+                        />
+                        <Transition enterActiveClass="animate__animated animate__fadeIn">
+                            <button
+                                v-if="bringMeBack"
+                                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center bg-white text-black p-3 rounded-lg"
+                                @click="bringBack"
+                            >
+                                Bring me back
+                            </button>
+                        </Transition>
+                    </div>
+                    <div class="flex flex-col justify-center mt-10 md:mt-0">
+                        <h1
+                            class="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-center md:text-left transition-all duration-300"
                         >
-                            Bring me back
-                        </button>
-                    </Transition>
+                            Bernard Borg
+                        </h1>
+                        <h2
+                            class="text-xl md:text-3xl lg:text-4xl xl:text-5xl font-thin text-center md:text-left transition-all duration-300"
+                        >
+                            Fullstack Software Developer
+                        </h2>
+                    </div>
                 </div>
-                <div class="flex flex-col justify-center mt-10 md:mt-0">
-                    <h1
-                        class="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-center md:text-left transition-all duration-300"
-                    >
-                        Bernard Borg
-                    </h1>
-                    <h2
-                        class="text-xl md:text-3xl lg:text-4xl xl:text-5xl font-thin text-center md:text-left transition-all duration-300"
-                    >
-                        Fullstack Software Developer
-                    </h2>
-                </div>
+                <SectionMenu />
             </div>
-            <SectionMenu />
-        </div>
-    </main>
-    <footer class="text-center gap-y-1 pt-6 pb-8">
-        <span class="text-sm">
-            Handcrafted by yours truly <i class="fa-regular fa-copyright" aria-hidden="true"></i>
-            {{ new Date().getFullYear() }}
-        </span>
-    </footer>
+        </main>
+        <footer class="text-center gap-y-1 pt-6 pb-8">
+            <span class="text-sm">
+                Handcrafted by yours truly <i class="fa-regular fa-copyright" aria-hidden="true"></i>
+                {{ new Date().getFullYear() }}
+            </span>
+        </footer>
+    </template>
+    <template v-else>
+        <PdfViewer />
+    </template>
 </template>
 
 <style>
