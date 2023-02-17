@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { type PropType, ref, computed, reactive } from "vue";
-import { useElementBounding, useEventListener } from "@vueuse/core";
+import { type PropType, ref, reactive } from "vue";
+import { useElementBounding } from "@vueuse/core";
 
 const props = defineProps({
     text: { type: String, required: true },
@@ -20,13 +20,18 @@ const showingTooltip = ref<boolean>(false);
 const anchorBounds = reactive(useElementBounding(anchorElement));
 const tooltipBounds = reactive(useElementBounding(tooltipElement));
 
-useEventListener(window, "resize", () => {
+const position = ref<{ horizontalPosition: Number; verticalPosition: Number }>();
+
+const showHideTooltip = (show: boolean) => {
+    showingTooltip.value = show;
+    updatePosition();
+};
+
+const updatePosition = () => {
     anchorBounds.update();
     tooltipBounds.update();
-});
 
-const position = computed(() => {
-    if (anchorElement.value && tooltipBounds) {
+    if (anchorBounds && tooltipBounds) {
         let hp;
 
         if (props.tooltipPosition === "left") {
@@ -47,12 +52,12 @@ const position = computed(() => {
             vp = anchorBounds.top + (anchorBounds.height / 2 - tooltipBounds.height / 2);
         }
 
-        return {
+        position.value = {
             horizontalPosition: hp,
             verticalPosition: vp
         };
     }
-});
+};
 </script>
 
 <template>
@@ -61,8 +66,8 @@ const position = computed(() => {
         :class="`text-blue-600 hover:text-blue-500 whitespace-nowrap ${link ? 'cursor-pointer' : ''}`"
         :href="link"
         :target="openInNewTab ? '_blank' : '_self'"
-        @mouseover="showingTooltip = true"
-        @mouseleave="showingTooltip = false"
+        @mouseover="() => showHideTooltip(true)"
+        @mouseleave="() => showHideTooltip(false)"
     >
         {{ text }}{{ link && openInNewTab ? " " : ""
         }}<i
