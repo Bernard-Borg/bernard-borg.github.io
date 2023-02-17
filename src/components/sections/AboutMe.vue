@@ -22,7 +22,7 @@ const yearsOfLearning = computed(() => {
             <inline-svg
                 id="maltese-flag"
                 class="inline"
-                src="/malta.svg"
+                src="/images/malta.svg"
                 title="Maltese flag"
                 height="50px"
             /></HoverLink
@@ -30,7 +30,7 @@ const yearsOfLearning = computed(() => {
         the world of software started out with a love for Java. The first thing I got obsessed with was JOptionPanes. I
         used to make use of them in all my projects. Soon after, I learnt about more advanced GUI technologies such as
         AWT and Swing. I enjoyed tinkering around, creating small programs, eventually creating a small
-        <HoverLink text="2D maze game"><img src="/BAmazed.png" class="w-96" /></HoverLink>
+        <HoverLink text="2D maze game"><img src="/images/BAmazed.png" class="w-96" /></HoverLink>
         for my MATSEC A-level project (which I completed through private lessons, while studying Chemistry and Pure
         Mathematics for my A-levels).
     </p>
@@ -40,14 +40,14 @@ const yearsOfLearning = computed(() => {
         recommend enough), as well as Javascript, HTML, CSS, Python and React (initially through
         <HoverLink text="Codecademy" link="https://www.codecademy.com/" :openInNewTab="true" />, and finally through
         <HoverLink text="freeCodeCamp" link="https://www.freecodecamp.org/" :openInNewTab="true"
-            ><img src="/freeCodeCampCert.png" class="w-96" /></HoverLink
+            ><img src="/images/freeCodeCampCert.png" class="w-96" /></HoverLink
         >).
     </p>
     <p class="text-md md:text-lg leading-7 md:text-justify mb-3">
         During this time, I was also in the process of getting my Bachelor of Science in IT (Software Development) degree
         at the University of Malta, while also being part of multiple student placement internships. I have now graduated with a
         first-class honours and am working full-time at <HoverLink text="Megabyte" link="https://www.megabyte.net/" :openInNewTab="true">
-            <img src="/megabyte-logo.png" class="w-28" />
+            <img src="/images/megabyte-logo.png" class="w-28" />
         </HoverLink>. 
         I'm currently looking to get a diploma in UI/UX design, enjoy contributing on 
         <HoverLink text="StackOverflow" link="https://stackoverflow.com/users/13426975/bernard-borg" :openInNewTab="true"></HoverLink> 
@@ -64,7 +64,7 @@ const yearsOfLearning = computed(() => {
         In my free time, I enjoy learning about new technologies by creating personal projects and reading about UI/UX design. Moreover, I play the trumpet with the Count Roger Band of Rabat and enjoy playing <HoverLink text="video games" />, spending time with my 
         <HoverLink text="two cats">
             <div class="grid grid-cols-2 w-[300px]">
-            <img src="/Rubee.jpg" class="h-full object-cover" alt="Rubee"><img src="/Peanut.png" class="h-full object-cover" alt="Peanut">
+            <img src="/images/Rubee.jpg" class="h-full object-cover" alt="Rubee"><img src="/images/Peanut.png" class="h-full object-cover" alt="Peanut">
             <span>Rubee</span><span>Peanut</span>
         </div></HoverLink>, listening to music and travelling. I'm also interested in Typography (did you notice that I love the font Inter?) and drawing.
     </p>

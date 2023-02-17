@@ -58,7 +58,7 @@ const clickPicture = () => {
                         ref="profilePicture"
                         alt="Picture of Bernard Borg"
                         class="rounded-full aspect-square object-cover animate__animated transition-all duration-300"
-                        src="/image.jpg"
+                        src="/images/image.jpg"
                         @click="clickPicture"
                     />
                     <Transition enterActiveClass="animate__animated animate__fadeIn">

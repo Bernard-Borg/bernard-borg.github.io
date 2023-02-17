@@ -23,7 +23,7 @@ const projectsList: Project[] = [
     {
         name: "VideoVish",
         liveLink: "https://github.com/Bernard-Borg/VideOVish/releases",
-        previewImage: "/VideoVish.png",
+        previewImage: "/images/VideoVish.png",
         downloadable: true,
         githubLink: "https://github.com/Bernard-Borg/VideoVish",
         learningOutcomes: [
