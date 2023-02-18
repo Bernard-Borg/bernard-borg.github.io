@@ -36,10 +36,18 @@ const updatePosition = () => {
 
         if (props.tooltipPosition === "left") {
             hp = anchorBounds.left - tooltipBounds.width - props.tooltipOffset;
+
+            if (hp < 0) {
+                hp = anchorBounds.left + anchorBounds.width + props.tooltipOffset;
+            }
         } else if (props.tooltipPosition === "right") {
             hp = anchorBounds.left + anchorBounds.width + props.tooltipOffset;
         } else {
             hp = anchorBounds.left + (anchorBounds.width / 2 - tooltipBounds.width / 2);
+        }
+
+        if (hp < 0) {
+            hp = 0;
         }
 
         let vp;
