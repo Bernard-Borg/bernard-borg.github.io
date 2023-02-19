@@ -1,17 +1,36 @@
 <script setup lang="ts">
 import "animate.css";
 import { useTimeoutFn } from "@vueuse/shared";
-import { inject, Ref, ref } from "vue";
+import { computed, inject, onMounted, Ref, ref } from "vue";
 import SectionMenu from "@/components/SectionMenu.vue";
 import Socials from "@/components/Socials.vue";
 import { useSound } from "@vueuse/sound";
 import hitSfx from "@/assets/sounds/hit.mp3";
 import hitDownSfx from "@/assets/sounds/hit-down.mp3";
 import PdfViewer from "@/components/PdfViewer.vue";
+import Peeper from "@/components/Peeper.vue";
+import { useLocalStorage } from "@vueuse/core";
+import AchievementGet from "./components/AchievementGet.vue";
 
 const clickCounter = ref<number>(0);
 const profilePicture = ref<HTMLImageElement>();
 const bringMeBack = ref<boolean>(false);
+const easterEggsFirstTime = ref<boolean>(false);
+const eeModeEnabledText = ref<HTMLSpanElement>();
+const eeModeEnabledContainer = ref<HTMLDivElement>();
+const achievement1 = ref<InstanceType<typeof AchievementGet>>();
+
+const easterEggState = useLocalStorage(
+    "nggyu-store",
+    {
+        enabled: false,
+        bertu: false,
+        grixu: false,
+        dre: false,
+        charles: false
+    },
+    { mergeDefaults: true }
+);
 
 const viewingPdf = inject<Ref<boolean>>("viewingPDF");
 
@@ -24,6 +43,21 @@ const bringBack = () => {
     clickCounter.value = 0;
 };
 
+const enableEasterEggMode = () => {
+    if (!easterEggState.value.enabled) {
+        easterEggState.value.enabled = true;
+        easterEggsFirstTime.value = true;
+
+        useTimeoutFn(() => {
+            eeModeEnabledContainer.value?.classList.add("animate__animated", "animate__fadeOut");
+        }, 3000);
+
+        useTimeoutFn(() => {
+            easterEggsFirstTime.value = false;
+        }, 4000);
+    }
+};
+
 const clickPicture = () => {
     if (clickCounter.value == 5) {
         playHitDown();
@@ -31,13 +65,13 @@ const clickPicture = () => {
         profilePicture.value?.classList.add("animate__hinge");
         profilePicture.value?.classList.remove("animate__headShake");
 
+        enableEasterEggMode();
+
         useTimeoutFn(() => {
             bringMeBack.value = true;
         }, 3000);
     } else if (clickCounter.value < 5) {
-        if (profilePicture.value?.classList.contains("animate__headShake")) {
-            profilePicture.value?.classList.remove("animate__headShake");
-        }
+        profilePicture.value?.classList.remove("animate__headShake");
 
         useTimeoutFn(() => {
             profilePicture.value?.classList.add("animate__headShake");
@@ -47,21 +81,42 @@ const clickPicture = () => {
 
     clickCounter.value++;
 };
+
+const remainingEasterEggs = computed(() => {
+    const { enabled: _, ...easterEggs } = easterEggState.value;
+    return easterEggs;
+});
 </script>
 
 <template>
     <template v-if="!viewingPdf">
         <header>
+            <div
+                class="absolute top-0 left-0 bg-white rounded-md m-3 py-2 pl-3 pr-6 text-black"
+                v-if="easterEggState.enabled"
+            >
+                <span>Easter eggs left: {{ Object.values(remainingEasterEggs).filter((x) => !x).length }}</span>
+            </div>
             <Socials />
         </header>
         <main>
+            <AchievementGet ref="achievement1" achievementText="Easter Egg 1" />
+            <div
+                v-if="easterEggsFirstTime"
+                class="fixed w-full h-full bg-black/80 z-10 flex justify-center items-center"
+                ref="eeModeEnabledContainer"
+            >
+                <span class="text-8xl top-1/2 arcade-classic change-color" ref="eeModeEnabledText">
+                    EASTER EGG MODE ENABLED
+                </span>
+            </div>
             <div class="flex flex-col mb-10">
                 <div class="flex flex-col items-center md:flex-row w-full justify-evenly mt-20 pb-10">
-                    <div class="relative rounded-full" id="profilePicture">
+                    <div class="relative rounded-full flex">
                         <img
                             ref="profilePicture"
                             alt="Picture of Bernard Borg"
-                            class="rounded-full aspect-square object-cover animate__animated transition-all duration-300"
+                            class="absolute rounded-full object-cover animate__animated transition-all duration-300"
                             src="/images/image.jpg"
                             @click="clickPicture"
                         />
@@ -74,6 +129,12 @@ const clickPicture = () => {
                                 Bring me back
                             </button>
                         </Transition>
+                        <div
+                            class="rounded-full overflow-hidden aspect-square relative pointer-events-none"
+                            id="profilePicture"
+                        >
+                            <Peeper class="absolute bottom-0 left-1/2 custom-translate" :animate="bringMeBack" />
+                        </div>
                     </div>
                     <div class="flex flex-col justify-center mt-10 md:mt-0">
                         <h1
@@ -105,6 +166,37 @@ const clickPicture = () => {
 
 <style>
 @import "@fortawesome/fontawesome-free/css/all.min.css";
+
+@font-face {
+    font-family: ArcadeClassic;
+    src: url("./assets/fonts/arcade_classic.ttf");
+}
+
+.arcade-classic {
+    font-family: "ArcadeClassic";
+}
+
+.change-color {
+    animation: 0.6s zoomIn, 0.6s linear change-color infinite;
+}
+
+@keyframes change-color {
+    0% {
+        color: darkred;
+    }
+
+    50% {
+        color: darkorange;
+    }
+
+    100% {
+        color: darkred;
+    }
+}
+
+.custom-translate {
+    transform: translate(-50%, 100%);
+}
 
 .animate__animated.animate__headShake {
     --animate-duration: 0.5s;
