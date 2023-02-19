@@ -10,8 +10,8 @@ import hitDownSfx from "@/assets/sounds/hit-down.mp3";
 import PdfViewer from "@/components/PdfViewer.vue";
 import Peeper from "@/components/Peeper.vue";
 import { useLocalStorage } from "@vueuse/core";
-import AchievementGet from "./components/AchievementGet.vue";
-import { useGlobalStore } from "./stores/global";
+import AchievementGet from "@/components/AchievementGet.vue";
+import { useGlobalStore } from "@/stores/global";
 
 const clickCounter = ref<number>(0);
 const profilePicture = ref<HTMLImageElement>();
@@ -20,6 +20,7 @@ const easterEggsFirstTime = ref<boolean>(false);
 const eeModeEnabledText = ref<HTMLSpanElement>();
 const eeModeEnabledContainer = ref<HTMLDivElement>();
 const achievement1 = ref<InstanceType<typeof AchievementGet>>();
+const achievement2 = ref<InstanceType<typeof AchievementGet>>();
 const globalStore = useGlobalStore();
 
 const easterEggState = useLocalStorage(
@@ -101,6 +102,10 @@ const remainingEasterEggs = computed(() => {
         </header>
         <main>
             <AchievementGet ref="achievement1" achievementText="Easter Egg 1" />
+            <AchievementGet
+                ref="achievement2"
+                :achievementText="`Found Easter Egg ${Object.keys(remainingEasterEggs).indexOf('bertu') + 1}`"
+            />
             <div
                 v-if="easterEggsFirstTime"
                 class="fixed w-full h-full bg-black/80 z-10 flex justify-center items-center"
@@ -133,7 +138,12 @@ const remainingEasterEggs = computed(() => {
                             class="rounded-full overflow-hidden aspect-square relative pointer-events-none"
                             id="profilePicture"
                         >
-                            <Peeper class="absolute bottom-0 left-1/2 custom-translate" :animate="bringMeBack" />
+                            <Peeper
+                                class="absolute bottom-0 left-1/2 custom-translate"
+                                :animate="bringMeBack"
+                                easterEgg="bertu"
+                                @clicked="() => achievement2?.show()"
+                            />
                         </div>
                     </div>
                     <div class="flex flex-col justify-center mt-10 md:mt-0">
