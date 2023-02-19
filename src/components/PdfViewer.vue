@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { onMounted, ref, Ref, inject } from "vue";
+import { onMounted, ref } from "vue";
 import VuePdfEmbed from "vue-pdf-embed";
 import pdfData from "@/data/PDF";
+import { useGlobalStore } from "@/stores/global";
 
 const pdfBase64 = ref<string>("");
 
@@ -10,7 +11,7 @@ const page = ref<number>(1);
 const pageCount = ref<number>(1);
 const pdfRef = ref();
 
-const viewingPdf = inject<Ref<boolean>>("viewingPDF");
+const globalStore = useGlobalStore();
 
 function handleDocumentRender() {
     isLoading.value = false;
@@ -18,9 +19,7 @@ function handleDocumentRender() {
 }
 
 const stopViewingPdf = () => {
-    if (viewingPdf) {
-        viewingPdf.value = false;
-    }
+    globalStore.toggleViewingPDF();
 };
 
 onMounted(() => {

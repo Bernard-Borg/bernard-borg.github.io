@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import "animate.css";
 import { useTimeoutFn } from "@vueuse/shared";
-import { computed, inject, onMounted, Ref, ref } from "vue";
+import { computed, ref } from "vue";
 import SectionMenu from "@/components/SectionMenu.vue";
 import Socials from "@/components/Socials.vue";
 import { useSound } from "@vueuse/sound";
@@ -11,6 +11,7 @@ import PdfViewer from "@/components/PdfViewer.vue";
 import Peeper from "@/components/Peeper.vue";
 import { useLocalStorage } from "@vueuse/core";
 import AchievementGet from "./components/AchievementGet.vue";
+import { useGlobalStore } from "./stores/global";
 
 const clickCounter = ref<number>(0);
 const profilePicture = ref<HTMLImageElement>();
@@ -19,6 +20,7 @@ const easterEggsFirstTime = ref<boolean>(false);
 const eeModeEnabledText = ref<HTMLSpanElement>();
 const eeModeEnabledContainer = ref<HTMLDivElement>();
 const achievement1 = ref<InstanceType<typeof AchievementGet>>();
+const globalStore = useGlobalStore();
 
 const easterEggState = useLocalStorage(
     "nggyu-store",
@@ -31,8 +33,6 @@ const easterEggState = useLocalStorage(
     },
     { mergeDefaults: true }
 );
-
-const viewingPdf = inject<Ref<boolean>>("viewingPDF");
 
 const { play: playHit } = useSound(hitSfx, { volume: 0.5 });
 const { play: playHitDown } = useSound(hitDownSfx, { volume: 0.5 });
@@ -89,7 +89,7 @@ const remainingEasterEggs = computed(() => {
 </script>
 
 <template>
-    <template v-if="!viewingPdf">
+    <template v-if="!globalStore.isViewingPDF">
         <header>
             <div
                 class="absolute top-0 left-0 bg-white rounded-md m-3 py-2 pl-3 pr-6 text-black"

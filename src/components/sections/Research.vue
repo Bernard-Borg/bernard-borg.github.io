@@ -1,13 +1,11 @@
 <script setup lang="ts">
 import researchHistory from "@/data/Research";
-import { inject, Ref } from "vue";
+import { useGlobalStore } from "@/stores/global";
 
-const viewingPdf = inject<Ref<boolean>>("viewingPDF");
+const globalStore = useGlobalStore();
 
 const viewPdf = () => {
-    if (viewingPdf) {
-        viewingPdf.value = true;
-    }
+    globalStore.toggleViewingPDF();
 };
 </script>
 
