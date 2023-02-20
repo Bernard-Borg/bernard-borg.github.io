@@ -56,7 +56,7 @@ const portfolioSections: PortfolioSection[] = [
                     :sectionName="section.name"
                     :sectionIcon="section.icon"
                     :focused="focusedSection === i"
-                    tabindex="0"
+                    :tabindex="focusedSection !== i ? 0 : ''"
                 />
             </ul>
         </nav>
