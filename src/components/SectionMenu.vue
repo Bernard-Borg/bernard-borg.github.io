@@ -52,9 +52,11 @@ const portfolioSections: PortfolioSection[] = [
                     v-for="(section, i) in portfolioSections"
                     :key="i"
                     @click="focusedSection = i"
+                    @keyup.enter="focusedSection = i"
                     :sectionName="section.name"
                     :sectionIcon="section.icon"
                     :focused="focusedSection === i"
+                    tabindex="0"
                 />
             </ul>
         </nav>
