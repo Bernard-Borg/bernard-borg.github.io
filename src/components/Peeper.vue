@@ -1,20 +1,12 @@
 <script setup lang="ts">
-import AchievementGet from "@/components/AchievementGet.vue";
-import { useLocalStorage } from "@vueuse/core";
+import { useGameStore } from "@/stores/game";
 import { useIntervalFn, useTimeoutFn } from "@vueuse/shared";
-import { computed, PropType, ref, watch } from "vue";
+import { PropType, ref, watch } from "vue";
 
 const pupils = ref<HTMLElement[]>();
 const peeper = ref<HTMLElement>();
 const interval = ref<number>(8000);
-
-const easterEggState = useLocalStorage("nggyu-store", {
-    enabled: false,
-    bertu: false,
-    grixu: false,
-    dre: false,
-    charles: false
-});
+const gameStore = useGameStore();
 
 const props = defineProps({
     animate: { type: Boolean, default: false },
@@ -43,7 +35,7 @@ const { pause, resume } = useIntervalFn(
 );
 
 const startAnimating = () => {
-    if (!easterEggState.value[props.easterEgg]) {
+    if (!gameStore.easterEggState[props.easterEgg]) {
         interval.value = 8000;
         resume();
     }
@@ -60,9 +52,8 @@ const stopAnimating = () => {
 };
 
 const peeperClicked = () => {
-    easterEggState.value[props.easterEgg] = true;
+    gameStore.updateEasterEgg(props.easterEgg);
     stopAnimating();
-    emit("clicked");
 };
 
 watch(
@@ -75,8 +66,6 @@ watch(
         }
     }
 );
-
-const emit = defineEmits(["clicked"]);
 </script>
 
 <template>

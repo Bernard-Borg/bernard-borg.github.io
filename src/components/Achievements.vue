@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { useTimeoutFn } from "@vueuse/shared";
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import { useSound } from "@vueuse/sound";
 import achievementSfx from "@/assets/sounds/achievement.mp3";
+import { useGameStore } from "@/stores/game";
 
 const { play: playAchievement } = useSound(achievementSfx, { volume: 1 });
 
+const gameStore = useGameStore();
 const achievement = ref();
 
 const show = () => {
@@ -24,11 +26,12 @@ const show = () => {
 
 const showing = ref<boolean>(false);
 
-defineProps({
-    achievementText: { type: String, required: true }
-});
-
-defineExpose({ show });
+watch(
+    () => gameStore.lastAchievement,
+    () => {
+        show();
+    }
+);
 </script>
 
 <template>
@@ -47,7 +50,7 @@ defineExpose({ show });
         >
             <div class="flex flex-col ml-16 mr-10">
                 <span class="font-bold">Achievement Unlocked</span>
-                <span>{{ achievementText }}</span>
+                <span>Easter Egg {{ gameStore.getEasterEggIndex(gameStore.lastAchievement ?? "charles") }}</span>
             </div>
         </div>
     </div>
