@@ -1,16 +1,20 @@
 <script setup lang="ts">
-import { useGameStore } from "@/stores/game";
-import { computed, ref, watch } from "vue";
+import { computed, ref } from "vue";
+import lockSfx from "@/assets/sounds/combination-lock.mp3";
+import unlockSfx from "@/assets/sounds/unlock-sfx.mp3";
+import { useSound } from "@vueuse/sound";
 
 const props = defineProps({
-    dials: { type: Number, required: true, default: 3 }
+    dials: { type: Number, required: true, default: 3 },
+    correctCombination: { type: String, required: true }
 });
 
 const dialContents = ref<Array<Array<number>>>(
     new Array(props.dials).fill(null).map(() => [9, 0, 1, 2, 3, 4, 5, 6, 7, 8])
 );
 
-const correctCombination = ref<string>();
+const { play: playLockSfx } = useSound(lockSfx, { volume: 0.3 });
+const { play: playUnlockSfx } = useSound(unlockSfx, { volume: 0.3 });
 const correct = ref<boolean | undefined>();
 
 const combo = computed<string>(() => {
@@ -20,16 +24,20 @@ const combo = computed<string>(() => {
 const dialMove = (index: number) => {
     const itemRemoved = dialContents.value[index].shift() ?? 0;
     dialContents.value[index].push(itemRemoved);
+    playLockSfx();
 };
 
-watch(combo, (newValue) => {
-    if (newValue === correctCombination.value) {
-        correct.value = true;
+const checkCombination = () => {
+    correct.value = combo.value === props.correctCombination;
+
+    if (correct.value) {
+        playUnlockSfx();
     }
-});
+};
 </script>
 
 <template>
+    <!-- Credit to MacEvelly for his inspiration: https://codepen.io/MacEvelly/pen/gpGZGZ -->
     <div class="flex items-center">
         <div class="lockInset">
             <div class="lockWrapper">
@@ -47,6 +55,8 @@ watch(combo, (newValue) => {
             :class="`btnCheck ml-10 ${
                 correct === false ? 'border border-red-500' : correct === true ? 'border border-green-500' : ''
             }`"
+            @click="checkCombination"
+            :disabled="correct"
         >
             Check
         </button>

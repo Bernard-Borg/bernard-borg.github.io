@@ -20,6 +20,7 @@ const showingTooltip = ref<boolean>(false);
 const anchorBounds = reactive(useElementBounding(anchorElement));
 const tooltipBounds = reactive(useElementBounding(tooltipElement));
 
+let touchTimer: ReturnType<typeof setTimeout>;
 const position = ref<{ horizontalPosition: Number; verticalPosition: Number }>();
 
 const showHideTooltip = (show: boolean) => {
@@ -39,9 +40,17 @@ const updatePosition = () => {
 
             if (hp < 0) {
                 hp = anchorBounds.left + anchorBounds.width + props.tooltipOffset;
+            } else if (hp + tooltipBounds.width > window.innerWidth) {
+                hp = window.innerWidth - tooltipBounds.width;
             }
         } else if (props.tooltipPosition === "right") {
             hp = anchorBounds.left + anchorBounds.width + props.tooltipOffset;
+
+            if (hp + tooltipBounds.width > window.innerWidth) {
+                hp = window.innerWidth - tooltipBounds.width;
+            } else if (hp < 0) {
+                hp = anchorBounds.left + anchorBounds.width + props.tooltipOffset;
+            }
         } else {
             hp = anchorBounds.left + (anchorBounds.width / 2 - tooltipBounds.width / 2);
         }
@@ -66,6 +75,24 @@ const updatePosition = () => {
         };
     }
 };
+
+const doHover = () => {
+    showHideTooltip(false);
+    emit("hover-finish");
+};
+
+const doTouchStart = () => {
+    showHideTooltip(true);
+    touchTimer = setTimeout(() => showHideTooltip(false), 200);
+};
+
+const doTouchEnd = () => {
+    if (touchTimer) {
+        clearTimeout(touchTimer);
+    }
+};
+
+const emit = defineEmits(["hover-finish"]);
 </script>
 
 <template>
@@ -75,7 +102,9 @@ const updatePosition = () => {
         :href="link"
         :target="openInNewTab ? '_blank' : '_self'"
         @mouseover="() => showHideTooltip(true)"
-        @mouseleave="() => showHideTooltip(false)"
+        @mouseleave="doHover"
+        @touchstart="doTouchStart"
+        @touchend="doTouchEnd"
     >
         {{ text }}{{ link && openInNewTab ? " " : ""
         }}<i
