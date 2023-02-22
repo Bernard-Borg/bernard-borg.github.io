@@ -60,8 +60,8 @@ function close() {
                 </p>
                 <span class="font-bold text-lg">Now you must solve this riddle;</span>
                 <span class="float-right text-md cursor-pointer">
-                    <HoverLink text="Hint" @hover-finish="hoverCounter += 1" tooltipPosition="right">
-                        <pre>{{ hintText }}</pre>
+                    <HoverLink text="Hint" @hover-finish="hoverCounter += 1" tooltipPosition="left">
+                        <pre class="whitespace-pre-line">{{ hintText }}</pre>
                     </HoverLink>
                 </span>
                 <pre class="whitespace-pre-line mt-4">
