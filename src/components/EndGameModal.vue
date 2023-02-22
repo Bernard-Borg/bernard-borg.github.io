@@ -3,7 +3,7 @@ import { onKeyUp } from "@vueuse/core";
 import CombinationLock from "@/components/CombinationLock.vue";
 import HoverLink from "@/components/HoverLink.vue";
 import { careerHistory } from "@/data/Career";
-import { computed, ref } from "vue";
+import { computed, ref, watch } from "vue";
 import { useGameStore } from "@/stores/game";
 
 const COMBINATION_LOCK_SLOTS = 4;
@@ -37,6 +37,15 @@ const hintText = computed<string>(() => {
         return "💀. Leave, seriously, you're wasting your time from here on out.";
     }
 });
+
+watch(
+    () => gameStore.animatingFinale,
+    (newValue) => {
+        if (newValue) {
+            emit("close");
+        }
+    }
+);
 
 function close() {
     emit("close");
