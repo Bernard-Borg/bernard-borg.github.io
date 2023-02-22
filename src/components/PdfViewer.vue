@@ -44,7 +44,9 @@ onMounted(() => {
                     <button
                         :disabled="page <= 1"
                         @click="page--"
-                        class="flex justify-center items-center w-[30px] aspect-square"
+                        :class="`flex justify-center items-center w-[30px] aspect-square ${
+                            page <= 1 ? 'invisible' : ''
+                        }`"
                     >
                         ❮
                     </button>
@@ -54,7 +56,9 @@ onMounted(() => {
                     <button
                         :disabled="page >= pageCount"
                         @click="page++"
-                        class="flex justify-center items-center w-[30px] aspect-square"
+                        :class="`flex justify-center items-center w-[30px] aspect-square ${
+                            page >= pageCount ? 'invisible' : ''
+                        }`"
                     >
                         ❯
                     </button>
