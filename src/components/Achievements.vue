@@ -28,8 +28,10 @@ const showing = ref<boolean>(false);
 
 watch(
     () => gameStore.lastAchievement,
-    () => {
-        show();
+    (newValue) => {
+        if (newValue) {
+            show();
+        }
     }
 );
 </script>
