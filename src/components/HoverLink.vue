@@ -43,7 +43,7 @@ const updatePosition = () => {
             if (hp + tooltipBounds.width > window.innerWidth) {
                 hp = window.innerWidth - tooltipBounds.width;
             } else if (hp < 0) {
-                hp = anchorBounds.left + anchorBounds.width + props.tooltipOffset;
+                hp = anchorBounds.left - tooltipBounds.width - props.tooltipOffset;
             }
         } else {
             hp = anchorBounds.left + (anchorBounds.width / 2 - tooltipBounds.width / 2);
@@ -60,8 +60,6 @@ const updatePosition = () => {
         if (hp + tooltipBounds.width > window.innerWidth) {
             if (tooltipElement.value) {
                 tooltipElement.value.style.maxWidth = `${window.innerWidth}px`;
-                tooltipElement.value.style.background = `red`;
-                console.log(tooltipElement.value);
             }
         }
 
