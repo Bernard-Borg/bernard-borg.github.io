@@ -33,6 +33,11 @@ export const useGameStore = defineStore("game", () => {
         return pickBy(easterEggs, (value, key) => !value);
     });
 
+    const numberOfEasterEggs = computed(() => {
+        const { enabled: _, ...easterEggs } = easterEggState.value;
+        return Object.keys(easterEggs).length;
+    });
+
     const activateEasterEggMode = (): boolean => {
         if (!easterEggState.value.enabled) {
             easterEggState.value.enabled = true;
@@ -59,11 +64,17 @@ export const useGameStore = defineStore("game", () => {
         );
     };
 
+    const isInFinale = computed(() => {
+        return easterEggState.value.enabled && !Object.keys(remainingEasterEggs.value).length;
+    });
+
     return {
         lastAchievement,
         easterEggState,
         remainingEasterEggs,
         easterEggFirstTime,
+        numberOfEasterEggs,
+        isInFinale,
         updateEasterEgg,
         activateEasterEggMode,
         getEasterEggIndex
