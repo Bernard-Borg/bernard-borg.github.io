@@ -3,6 +3,7 @@ import { computed, ref } from "vue";
 import lockSfx from "@/assets/sounds/combination-lock.mp3";
 import unlockSfx from "@/assets/sounds/unlock-sfx.mp3";
 import { useSound } from "@vueuse/sound";
+import { useGameStore } from "@/stores/game";
 
 const props = defineProps({
     dials: { type: Number, required: true, default: 3 },
@@ -16,6 +17,7 @@ const dialContents = ref<Array<Array<number>>>(
 const { play: playLockSfx } = useSound(lockSfx, { volume: 0.3 });
 const { play: playUnlockSfx } = useSound(unlockSfx, { volume: 0.3 });
 const correct = ref<boolean | undefined>();
+const gameStore = useGameStore();
 
 const combo = computed<string>(() => {
     return dialContents.value.map((x) => x[1]).join("");
@@ -32,6 +34,7 @@ const checkCombination = () => {
 
     if (correct.value) {
         playUnlockSfx();
+        gameStore.activateReward();
     }
 };
 </script>

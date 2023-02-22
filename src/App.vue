@@ -9,6 +9,8 @@ import Achievements from "@/components/Achievements.vue";
 import EasterEggCounter from "@/components/EasterEggCounter.vue";
 import EasterEggModeEnabled from "@/components/EasterEggModeEnabled.vue";
 import ProfilePicture from "@/components/ProfilePicture.vue";
+import FireworksAndMusic from "@/components/FireworksAndMusic.vue";
+import GameReset from "@/components/GameReset.vue";
 
 const globalStore = useGlobalStore();
 </script>
@@ -17,6 +19,8 @@ const globalStore = useGlobalStore();
     <template v-if="!globalStore.isViewingPDF">
         <header>
             <EasterEggCounter />
+            <FireworksAndMusic />
+            <GameReset />
             <Socials />
         </header>
         <main>

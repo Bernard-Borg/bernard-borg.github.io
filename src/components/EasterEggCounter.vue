@@ -24,7 +24,7 @@ watch(
         <span> Easter eggs left: {{ Object.values(gameStore.remainingEasterEggs).length }} </span>
     </div>
     <button
-        v-else-if="gameStore.isInFinale && !isEndGameModalShowing"
+        v-else-if="gameStore.isInFinale && !isEndGameModalShowing && !gameStore.animatingFinale"
         id="openModalButton"
         class="absolute top-0 left-0 bg-white rounded-md m-3 text-black py-2 px-3 z-10 text-center"
         @click="isEndGameModalShowing = true"

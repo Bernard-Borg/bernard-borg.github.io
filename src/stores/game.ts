@@ -7,7 +7,7 @@ type EasterEggs = {
 
 type EasterEggState = EasterEggs & { enabled: boolean };
 
-import { useLocalStorage } from "@vueuse/core";
+import { useLocalStorage, useTimeoutFn } from "@vueuse/core";
 import { defineStore } from "pinia";
 import { computed, ref } from "vue";
 import { pickBy } from "lodash-es";
@@ -15,6 +15,8 @@ import { pickBy } from "lodash-es";
 export const useGameStore = defineStore("game", () => {
     const lastAchievement = ref<keyof EasterEggs>();
     const easterEggFirstTime = ref<boolean>(false);
+    const animatingFinale = ref<boolean>(false);
+    const resettingGame = ref<boolean>(false);
 
     const easterEggState = useLocalStorage<EasterEggState>(
         "nggyu-store",
@@ -42,6 +44,7 @@ export const useGameStore = defineStore("game", () => {
         if (!easterEggState.value.enabled) {
             easterEggState.value.enabled = true;
             easterEggFirstTime.value = true;
+
             return true;
         } else {
             return false;
@@ -64,6 +67,27 @@ export const useGameStore = defineStore("game", () => {
         );
     };
 
+    const activateReward = () => {
+        animatingFinale.value = true;
+    };
+
+    const resetGame = () => {
+        animatingFinale.value = false;
+        resettingGame.value = true;
+
+        // Reset local storage state to everything false
+        Object.keys(easterEggState.value).forEach((key) => {
+            easterEggState.value[key as keyof EasterEggState] = false;
+        });
+
+        // Reset all game state
+        useTimeoutFn(() => {
+            lastAchievement.value = undefined;
+            resettingGame.value = false;
+            easterEggFirstTime.value = false;
+        }, 2000);
+    };
+
     const isInFinale = computed(() => {
         return easterEggState.value.enabled && !Object.keys(remainingEasterEggs.value).length;
     });
@@ -75,8 +99,12 @@ export const useGameStore = defineStore("game", () => {
         easterEggFirstTime,
         numberOfEasterEggs,
         isInFinale,
+        animatingFinale,
+        resettingGame,
+        activateReward,
         updateEasterEgg,
         activateEasterEggMode,
-        getEasterEggIndex
+        getEasterEggIndex,
+        resetGame
     };
 });
