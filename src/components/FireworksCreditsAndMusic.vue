@@ -9,6 +9,8 @@ const gameStore = useGameStore();
 
 const { play, stop } = useSound(nggyu, { volume: 0.4 });
 
+const credits = ref<HTMLDivElement>();
+
 const startEverything = () => {
     play();
     enableFireworks.value = true;
@@ -22,6 +24,21 @@ const stopEverything = () => {
 const stopFinaleAnimation = () => {
     gameStore.resetGame();
 };
+
+// let speed = 2; // 3 pixels per update
+// let currentPos = 0;
+// function scrollElement() {
+//   let element = document.querySelector("#myDiv");
+//   currentPos = element.scrollTop + speed;
+//   element.scrollTo({
+//   	top: currentPos,
+//     left: 0,
+//     behavior: "smooth"
+//   }); // scroll to new position
+// }
+// window.onload=function() {
+//    setInterval(scrollElement,100); // call the function every 50 millisecs
+// }
 
 watch(
     () => gameStore.animatingFinale,
@@ -41,6 +58,7 @@ watch(
         v-if="enableFireworks"
         @click="stopFinaleAnimation"
     >
+        <div ref="credits max-h-[80%] overflow-auto">Credits go here</div>
         <div class="firework absolute" v-for="(firework, i) in 6" :id="`firework${i}`" :key="i">
             <div
                 v-for="(explosion, j) in 12"
