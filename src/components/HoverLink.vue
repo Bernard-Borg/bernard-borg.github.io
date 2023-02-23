@@ -55,9 +55,7 @@ const updatePosition = () => {
 
         if (hp < 0) {
             hp = 0;
-        }
-
-        if (hp + tooltipBounds.width > window.innerWidth) {
+        } else if (hp + tooltipBounds.width > window.innerWidth) {
             if (tooltipElement.value) {
                 tooltipElement.value.style.maxWidth = `${window.innerWidth}px`;
             }

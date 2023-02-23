@@ -66,7 +66,7 @@ const yearsOfLearning = computed(() => {
             <img src="/images/Playtime.png" alt="Image of my play time">
         </HoverLink>, spending time with my 
         <HoverLink text="two cats">
-            <div class="grid grid-cols-2 w-[300px]">
+            <div class="grid grid-cols-2 max-w-[300px]">
             <img src="/images/Rubee.jpg" class="h-full object-cover" alt="Rubee"><img src="/images/Peanut.png" class="h-full object-cover" alt="Peanut">
             <span>Rubee</span><span>Peanut</span>
         </div></HoverLink>, listening to music and travelling. I'm also interested in Typography (did you notice that I love the font Inter?) and drawing.
