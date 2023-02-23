@@ -47,11 +47,11 @@ defineExpose({ activate });
 <style>
 @font-face {
     font-family: ArcadeClassic;
-    src: url("./assets/fonts/arcade_classic.ttf");
+    src: url(@/assets/fonts/arcade_classic.ttf);
 }
 
 .arcade-classic {
-    font-family: "ArcadeClassic";
+    font-family: ArcadeClassic;
 }
 
 .change-color {
