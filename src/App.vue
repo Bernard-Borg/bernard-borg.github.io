@@ -20,7 +20,6 @@ const globalStore = useGlobalStore();
         <header>
             <EasterEggCounter />
             <FireworksAndMusic />
-            <GameReset />
             <Socials />
         </header>
         <main>

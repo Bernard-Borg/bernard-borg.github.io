@@ -6,6 +6,7 @@ import hitSfx from "@/assets/sounds/hit.mp3";
 import hitDownSfx from "@/assets/sounds/hit-down.mp3";
 import { useGameStore } from "@/stores/game";
 import { ref } from "vue";
+import GameReset from "@/components/GameReset.vue";
 
 const gameStore = useGameStore();
 
@@ -65,8 +66,11 @@ const clickPicture = () => {
                 Bring me back
             </button>
         </Transition>
-        <div class="rounded-full overflow-hidden aspect-square relative pointer-events-none" id="profilePicture">
-            <Peeper class="absolute bottom-0 left-1/2 custom-translate" :animate="bringMeBack" easterEgg="bertu" />
+        <div class="rounded-full overflow-visible aspect-square relative pointer-events-none">
+            <GameReset />
+            <div class="rounded-full overflow-hidden aspect-square relative pointer-events-none" id="profilePicture">
+                <Peeper class="absolute bottom-0 left-1/2 custom-translate" :animate="bringMeBack" easterEgg="bertu" />
+            </div>
         </div>
     </div>
 </template>

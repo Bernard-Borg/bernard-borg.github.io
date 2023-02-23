@@ -13,7 +13,7 @@ import { computed, ref } from "vue";
 import { pickBy } from "lodash-es";
 
 export const useGameStore = defineStore("game", () => {
-    const lastAchievement = ref<keyof EasterEggs>();
+    const lastAchievement = ref<string>();
     const easterEggFirstTime = ref<boolean>(false);
     const animatingFinale = ref<boolean>(false);
     const resettingGame = ref<boolean>(false);
@@ -58,13 +58,18 @@ export const useGameStore = defineStore("game", () => {
         }
     };
 
-    const getEasterEggIndex = (easterEgg: keyof EasterEggs): number => {
+    const getEasterEggIndex = (easterEgg: string | undefined): number => {
         const { enabled: _, ...easterEggs } = easterEggState.value;
-        return (
-            Object.keys(easterEggs)
-                .sort()
-                .findIndex((x) => x === easterEgg) + 1
-        );
+
+        if (easterEgg && Object.keys(easterEggs).includes(easterEgg)) {
+            return (
+                Object.keys(easterEggs)
+                    .sort()
+                    .findIndex((x) => x === easterEgg) + 1
+            );
+        } else {
+            return -1;
+        }
     };
 
     const activateReward = () => {
@@ -74,6 +79,7 @@ export const useGameStore = defineStore("game", () => {
     const resetGame = () => {
         animatingFinale.value = false;
         resettingGame.value = true;
+        lastAchievement.value = "Game Completed - Thanks for playing";
 
         // Reset local storage state to everything false
         Object.keys(easterEggState.value).forEach((key) => {
@@ -85,7 +91,7 @@ export const useGameStore = defineStore("game", () => {
             lastAchievement.value = undefined;
             resettingGame.value = false;
             easterEggFirstTime.value = false;
-        }, 2000);
+        }, 3000);
     };
 
     const isInFinale = computed(() => {

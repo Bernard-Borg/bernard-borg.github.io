@@ -40,7 +40,7 @@ watch(
     <div
         v-if="showing"
         ref="achievement"
-        class="flex absolute left-1/2 -translate-x-1/2 items-center m-3 achievement-container rounded-full max-w-max"
+        class="flex absolute left-1/2 -translate-x-1/2 items-center m-3 achievement-container rounded-full max-w-max z-[1500]"
     >
         <span
             class="rounded-full flex justify-center items-center -mr-11 z-10 aspect-square w-[65px] text-black text-2xl"
@@ -52,7 +52,13 @@ watch(
         >
             <div class="flex flex-col ml-16 mr-10">
                 <span class="font-bold">Achievement Unlocked</span>
-                <span>Easter Egg {{ gameStore.getEasterEggIndex(gameStore.lastAchievement ?? "charles") }}</span>
+                <span>
+                    {{
+                        gameStore.getEasterEggIndex(gameStore.lastAchievement) > 0
+                            ? `Easter Egg ${gameStore.getEasterEggIndex(gameStore.lastAchievement)}`
+                            : gameStore.lastAchievement
+                    }}
+                </span>
             </div>
         </div>
     </div>

@@ -59,7 +59,7 @@ watch(
 }
 
 .fireworks {
-    background-color: rgba(128, 128, 128, 0.5);
+    background-color: rgba(50, 50, 64, 0.9);
 }
 
 @for $i from 0 through 6 {

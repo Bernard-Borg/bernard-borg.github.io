@@ -69,7 +69,13 @@ watch(
 </script>
 
 <template>
-    <div id="peeper" class="cursor-pointer pointer-events-auto" ref="peeper" @click="peeperClicked">
+    <div
+        v-if="!gameStore.easterEggState[props.easterEgg]"
+        id="peeper"
+        class="cursor-pointer pointer-events-auto"
+        ref="peeper"
+        @click="peeperClicked"
+    >
         <div v-for="(eye, i) in 2" class="eye">
             <div class="eye-pupil" ref="pupils"></div>
         </div>
