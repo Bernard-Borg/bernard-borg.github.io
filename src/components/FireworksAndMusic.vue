@@ -54,7 +54,7 @@ watch(
 <style scoped lang="scss">
 // Effect adapted from https://www.youtube.com/watch?v=K4K7HNavK4U
 
-@mixin random-yellow() {
+@mixin random-light-color() {
     background: rgb(random(128) + 128, random(128) + 128, 0);
 }
 
@@ -70,6 +70,7 @@ watch(
 
         .explosion::before {
             animation: explosion random(2) + 1s random(1) + 1s ease-in-out infinite;
+            @include random-light-color();
         }
     }
 }
@@ -91,7 +92,7 @@ watch(
         right: 0;
         top: 100%;
         height: 40px;
-        @include random-yellow();
+        @include random-light-color();
     }
 }
 
