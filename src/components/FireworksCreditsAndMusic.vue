@@ -54,17 +54,35 @@ watch(
 
 <template>
     <div
-        class="fixed w-full h-full top-0 left-0 flex justify-center items-center z-[100] fireworks"
+        class="fixed w-full h-full top-0 left-0 flex z-[100] fireworks"
         v-if="enableFireworks"
         @click="stopFinaleAnimation"
     >
-        <div ref="credits max-h-[80%] overflow-auto">Credits go here</div>
-        <div class="firework absolute" v-for="(firework, i) in 6" :id="`firework${i}`" :key="i">
-            <div
-                v-for="(explosion, j) in 12"
-                :key="j"
-                class="explosion absolute -left-[2px] bottom-0 w-[4px] h-[80px]"
-            ></div>
+        <div id="left-fireworks" class="w-1/4">
+            <div class="firework relative" v-for="(firework, i) in 3" :id="`firework${i}`" :key="i">
+                <div
+                    v-for="(explosion, j) in 12"
+                    :key="j"
+                    class="explosion absolute -left-[2px] bottom-0 w-[4px] h-[80px]"
+                ></div>
+            </div>
+        </div>
+        <div ref="credits" class="h-full animate-credits w-1/2">
+            Credits go hereCredits go hereCredits go hereCredits go hereCredits go hereCredits go hereCredits go
+            hereCredits go hereCredits go hereCredits go hereCredits go hereCredits go hereCredits go hereCredits go
+            hereCredits go hereCredits go hereCredits go hereCredits go hereCredits go hereCredits go hereCredits go
+            hereCredits go hereCredits go hereCredits go hereCredits go hereCredits go hereCredits go hereCredits go
+            hereCredits go hereCredits go hereCredits go hereCredits go hereCredits go hereCredits go hereCredits go
+            hereCredits go hereCredits go hereCredits go hereCredits go hereCredits go hereCredits go here
+        </div>
+        <div id="right-fireworks" class="w-1/4">
+            <div class="firework relative" v-for="(firework, i) in 3" :id="`firework${i + 3}`" :key="i + 3">
+                <div
+                    v-for="(explosion, j) in 12"
+                    :key="j"
+                    class="explosion absolute -left-[2px] bottom-0 w-[4px] h-[80px]"
+                ></div>
+            </div>
         </div>
     </div>
 </template>
@@ -122,6 +140,17 @@ watch(
     33%,
     100% {
         top: -50%;
+    }
+}
+
+.animate-credits {
+    transform: translateY(100%);
+    animation: 20s credits ease-in-out 1;
+}
+
+@keyframes credits {
+    100% {
+        transform: translateY(-100%);
     }
 }
 </style>
