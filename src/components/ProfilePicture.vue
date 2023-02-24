@@ -19,8 +19,13 @@ const bringMeBack = ref<boolean>(false);
 
 const bringBack = () => {
     profilePicture.value?.classList.remove("animate__hinge");
+    profilePicture.value?.classList.add("animate__backInDown");
     bringMeBack.value = false;
     clickCounter.value = 0;
+
+    useTimeoutFn(() => {
+        profilePicture.value?.classList.remove("animate__backInDown");
+    }, 1000);
 };
 
 const clickPicture = () => {
