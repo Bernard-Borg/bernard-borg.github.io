@@ -35,6 +35,7 @@ const { toggleAccordion, visible } = useAccordion(accordionContent);
                 <CareerLink
                     v-if="careerPosition.description"
                     :text="visible ? 'Hide' : 'Details'"
+                    :iconClass="visible ? `fa-solid fa-chevron-up` : `fa-solid fa-chevron-down`"
                     class="w-24"
                     @click="toggleAccordion"
                 />
