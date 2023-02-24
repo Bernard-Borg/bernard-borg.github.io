@@ -22,6 +22,7 @@ function handleClick(e: MouseEvent) {
 }
 
 const emit = defineEmits(["close"]);
+
 const hintText = computed<string>(() => {
     if (hoverCounter.value < 10) {
         return "1. The first digit is located in the a comment in the HTML.\n2. The second digit is located in the 'Career' screen\n3. The third digit is located in my research paper.\n4. The last digit is located somewhere in this modal.";

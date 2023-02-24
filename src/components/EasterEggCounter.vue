@@ -2,15 +2,20 @@
 import { useGameStore } from "@/stores/game";
 import { ref, watch } from "vue";
 import EndGameModal from "@/components/EndGameModal.vue";
+import winSfx from "@/assets/sounds/win-sfx.mp3";
+import { useSound } from "@vueuse/sound";
 
 const gameStore = useGameStore();
 const isEndGameModalShowing = ref<boolean>(false);
+
+const { play: playWin } = useSound(winSfx, { volume: 0.3 });
 
 watch(
     () => gameStore.isInFinale,
     (newValue) => {
         if (newValue) {
             isEndGameModalShowing.value = true;
+            playWin();
         }
     }
 );
