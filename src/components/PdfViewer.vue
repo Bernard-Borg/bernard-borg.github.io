@@ -3,12 +3,14 @@ import { onMounted, ref } from "vue";
 import VuePdfEmbed from "vue-pdf-embed";
 import pdfData from "@/data/PDF";
 import { useGlobalStore } from "@/stores/global";
+import Peeper from "@/components/Peeper.vue";
 
 const pdfBase64 = ref<string>("");
 
 const isLoading = ref<boolean>(true);
 const page = ref<number>(1);
 const pageCount = ref<number>(1);
+const showPeeper = ref<boolean>(false);
 const pdfRef = ref();
 
 const globalStore = useGlobalStore();
@@ -17,6 +19,16 @@ function handleDocumentRender() {
     isLoading.value = false;
     pageCount.value = pdfRef.value.pageCount;
 }
+
+const changePage = (increment: boolean) => {
+    if (increment) {
+        page.value++;
+    } else {
+        page.value--;
+    }
+
+    showPeeper.value = true;
+};
 
 const stopViewingPdf = () => {
     globalStore.toggleViewingPDF();
@@ -32,10 +44,9 @@ onMounted(() => {
         <div
             :class="`${
                 isLoading ? 'justify-center' : 'justify-between'
-            } pdf-viewer-header flex bg-slate-700 p-5 text-white`"
+            } pdf-viewer-header flex bg-slate-700 p-5 text-white relative overflow-hidden`"
         >
             <template v-if="isLoading">Loading...</template>
-
             <template v-else>
                 <button class="cursor-pointer" @click="stopViewingPdf">
                     <i class="fa-solid fa-arrow-left text-3xl" aria-hidden="true"></i>
@@ -43,7 +54,7 @@ onMounted(() => {
                 <span class="flex gap-3 items-center text-md">
                     <button
                         :disabled="page <= 1"
-                        @click="page--"
+                        @click="changePage(false)"
                         :class="`flex justify-center items-center w-[30px] aspect-square ${
                             page <= 1 ? 'invisible' : ''
                         }`"
@@ -55,7 +66,7 @@ onMounted(() => {
 
                     <button
                         :disabled="page >= pageCount"
-                        @click="page++"
+                        @click="changePage(true)"
                         :class="`flex justify-center items-center w-[30px] aspect-square ${
                             page >= pageCount ? 'invisible' : ''
                         }`"
@@ -65,6 +76,7 @@ onMounted(() => {
                 </span>
                 <span></span>
             </template>
+            <Peeper class="absolute bottom-0 left-3/4 custom-translate" :animate="showPeeper" easterEgg="charles" />
         </div>
         <div class="pdf-viewer-content overflow-hidden max-w-[900px] my-0 mx-auto">
             <div class="pdf-content">

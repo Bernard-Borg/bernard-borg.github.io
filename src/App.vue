@@ -10,8 +10,16 @@ import EasterEggCounter from "@/components/EasterEggCounter.vue";
 import EasterEggModeEnabled from "@/components/EasterEggModeEnabled.vue";
 import ProfilePicture from "@/components/ProfilePicture.vue";
 import FireworksCreditsAndMusic from "@/components/FireworksCreditsAndMusic.vue";
+import { useGameStore } from "./stores/game";
 
 const globalStore = useGlobalStore();
+const gameStore = useGameStore();
+
+const copyrightEasterEgg = () => {
+    if (gameStore.easterEggState.enabled) {
+        gameStore.updateEasterEgg("grixu");
+    }
+};
 </script>
 
 <template>
@@ -45,12 +53,20 @@ const globalStore = useGlobalStore();
         </main>
         <footer class="text-center gap-y-1 pt-6 pb-8">
             <span class="text-sm">
-                Handcrafted by yours truly <i class="fa-regular fa-copyright" aria-hidden="true"></i>
+                Handcrafted by yours truly
+                <i
+                    :class="`fa-regular fa-copyright ${
+                        gameStore.easterEggState.enabled && !gameStore.easterEggState.grixu ? 'cursor-help' : ''
+                    }`"
+                    aria-hidden="true"
+                    @click="copyrightEasterEgg"
+                ></i>
                 {{ new Date().getFullYear() }}
             </span>
         </footer>
     </template>
     <template v-else>
+        <Achievements />
         <PdfViewer />
     </template>
 </template>

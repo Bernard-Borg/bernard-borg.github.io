@@ -4,10 +4,19 @@ import { PropType } from "vue";
 import { CareerRecord } from "@/data/Career";
 import CareerPosition from "@/components/sections/records/CareerPosition.vue";
 import { getDuration } from "@/utils/CareerUtils";
+import { useGameStore } from "@/stores/game";
 
 defineProps({
     careerRecord: { type: Object as PropType<CareerRecord>, required: true }
 });
+
+const gameStore = useGameStore();
+
+const clickedCurrent = () => {
+    if (gameStore.easterEggState.enabled) {
+        gameStore.updateEasterEgg("dre");
+    }
+};
 </script>
 
 <template>
@@ -19,6 +28,7 @@ defineProps({
                     <span
                         v-if="careerRecord.positions.some((x) => !x.endDate)"
                         class="bg-blue-600 text-white text-sm px-2 py-1 rounded-lg ml-2"
+                        @click="clickedCurrent"
                     >
                         Current
                     </span>

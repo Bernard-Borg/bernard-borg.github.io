@@ -4,14 +4,22 @@ import { CareerRecord } from "@/data/Career";
 import { PropType, ref } from "vue";
 import { formatDate } from "@/utils/CareerUtils";
 import { useAccordion } from "@/composables";
+import { useGameStore } from "@/stores/game";
 
 defineProps({
     careerRecord: { type: Object as PropType<CareerRecord>, required: true }
 });
 
 const accordionContent = ref<HTMLElement | undefined>();
+const gameStore = useGameStore();
 
 const { toggleAccordion, visible } = useAccordion(accordionContent);
+
+const clickedCurrent = () => {
+    if (gameStore.easterEggState.enabled) {
+        gameStore.updateEasterEgg("dre");
+    }
+};
 </script>
 
 <template>
@@ -23,6 +31,7 @@ const { toggleAccordion, visible } = useAccordion(accordionContent);
                     <span
                         v-if="!careerRecord.positions[0].endDate"
                         class="bg-blue-600 text-white text-sm px-2 py-1 rounded-lg ml-2"
+                        @click="clickedCurrent"
                     >
                         Current
                     </span>

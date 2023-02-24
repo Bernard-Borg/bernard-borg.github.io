@@ -70,7 +70,7 @@ watch(
 
 <template>
     <div
-        v-if="!gameStore.easterEggState[props.easterEgg]"
+        v-if="gameStore.easterEggState.enabled && !gameStore.easterEggState[props.easterEgg]"
         id="peeper"
         class="cursor-pointer pointer-events-auto"
         ref="peeper"
