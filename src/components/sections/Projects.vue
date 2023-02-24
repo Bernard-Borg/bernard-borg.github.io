@@ -3,7 +3,7 @@ import projectsList from "@/data/Projects";
 </script>
 
 <template>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-3 relative">
         <div
             v-for="(project, i) in projectsList"
             class="flex flex-col bg-blue-400 mb-3 justify-between outline outline-black outline-1 rounded-md"
@@ -49,8 +49,8 @@ import projectsList from "@/data/Projects";
                     </a>
                 </div>
             </div>
-            <div v-if="project.previewImage">
-                <img :src="project.previewImage" :alt="`Image of project ${project.name}`" />
+            <div v-if="project.previewImage" class="max-h-[300px] flex">
+                <img :src="project.previewImage" :alt="`Image of project ${project.name}`" class="object-contain" />
             </div>
             <div v-else class="flex items-center justify-center min-h-[150px]">Preview unavailable</div>
             <div class="bg-white text-sm p-3">

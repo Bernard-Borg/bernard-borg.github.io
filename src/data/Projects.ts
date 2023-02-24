@@ -10,9 +10,15 @@ export type Project = {
 
 const projectsList: Project[] = [
     {
+        name: "My Personal Website",
+        liveLink: "https://bernard-borg.github.io",
+        learningOutcomes: ["Vue", "Pinia", "JavaScript", "Typescript", "SASS", "Audacity"]
+    },
+    {
         name: "SudokuApp",
         liveLink: "https://bernard-borg.github.io/SudokuApp",
         githubLink: "https://github.com/Bernard-Borg/SudokuApp",
+        previewImage: "/images/SudokuApp.png",
         learningOutcomes: ["Vite", "Vue", "Typescript"]
     },
     {
