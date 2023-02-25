@@ -21,24 +21,11 @@ const stopEverything = () => {
     enableFireworks.value = false;
 };
 
-const stopFinaleAnimation = () => {
-    gameStore.resetGame();
+const stopFinaleAnimation = (e: MouseEvent) => {
+    if (e.target instanceof HTMLElement && e.target.classList.contains("fireworks")) {
+        gameStore.resetGame();
+    }
 };
-
-// let speed = 2; // 3 pixels per update
-// let currentPos = 0;
-// function scrollElement() {
-//   let element = document.querySelector("#myDiv");
-//   currentPos = element.scrollTop + speed;
-//   element.scrollTo({
-//   	top: currentPos,
-//     left: 0,
-//     behavior: "smooth"
-//   }); // scroll to new position
-// }
-// window.onload=function() {
-//    setInterval(scrollElement,100); // call the function every 50 millisecs
-// }
 
 watch(
     () => gameStore.animatingFinale,
@@ -54,7 +41,7 @@ watch(
 
 <template>
     <div
-        class="fixed w-full h-full top-0 left-0 flex z-[100] fireworks"
+        class="fixed w-full h-full top-0 left-0 flex z-[100] fireworks justify-center"
         v-if="enableFireworks"
         @click="stopFinaleAnimation"
     >
@@ -67,13 +54,68 @@ watch(
                 ></div>
             </div>
         </div>
-        <div ref="credits" class="h-full animate-credits w-1/2">
-            Credits go hereCredits go hereCredits go hereCredits go hereCredits go hereCredits go hereCredits go
-            hereCredits go hereCredits go hereCredits go hereCredits go hereCredits go hereCredits go hereCredits go
-            hereCredits go hereCredits go hereCredits go hereCredits go hereCredits go hereCredits go hereCredits go
-            hereCredits go hereCredits go hereCredits go hereCredits go hereCredits go hereCredits go hereCredits go
-            hereCredits go hereCredits go hereCredits go hereCredits go hereCredits go hereCredits go hereCredits go
-            hereCredits go hereCredits go hereCredits go hereCredits go hereCredits go hereCredits go here
+        <div
+            ref="credits"
+            class="h-full animate-credits w-1/2 text-lg flex-col items-center text-center hidden md:flex"
+        >
+            <span class="text-2xl font-bold mb-10">CREDITS</span>
+            <div class="grid grid-cols-2 text-left font-thin gap-x-3">
+                <span class="block text-right font-semibold">Implementation</span>Me
+                <span class="block text-right font-semibold">Design</span>Me
+                <span class="block text-right font-semibold">Sound effects</span>
+                <div class="flex flex-col">
+                    <span>
+                        Achievement SFX from
+                        <a href="https://www.youtube.com/watch?v=HkExBV05_EY" target="_blank">[Link]</a>
+                    </span>
+                    <span>
+                        Hit SFX adapted from "There is no game"<a
+                            href="https://www.crazygames.com/game/there-is-no-game"
+                            target="_blank"
+                        >
+                            [Link]
+                        </a>
+                    </span>
+                    <span
+                        >Win SFX from
+                        <a href="https://www.youtube.com/watch?v=rr5CMS2GtCY" target="_blank">[Link]</a></span
+                    >
+                </div>
+                <span class="block text-right font-semibold">Credits music</span>
+                <span>
+                    LittleTranscriber
+                    <a href="https://www.youtube.com/watch?v=4w2icYjruEY" target="_blank">[Link]</a></span
+                >
+                <span class="block text-right font-semibold">Combination lock</span>
+                <span>
+                    Adapted from @MacEvelly
+                    <a href="https://codepen.io/MacEvelly/pen/gpGZGZ" target="_blank">[Link]</a></span
+                >
+                <span class="block text-right font-semibold">Fireworks</span>
+                <span
+                    >Adapted from MinzCode
+                    <a href="https://www.youtube.com/watch?v=K4K7HNavK4U" target="_blank">[Link]</a></span
+                >
+                <span class="block text-right font-semibold">Riddle</span>
+                <span
+                    >Generated with aid from ChatGPT
+                    <a href="https://chat.openai.com/chat" target="_blank">[Link]</a></span
+                >
+                <span class="block text-right font-semibold">Libraries used</span>
+                <div class="flex flex-col">
+                    <span>TailwindCSS (CSS Utility Classes)</span>
+                    <span>Vue 3 (Front-end framework)</span>
+                    <span>Vite (Tooling)</span>
+                    <span>Typescript (Dev Experience)</span>
+                    <span>Pinia (State management)</span>
+                    <span>Animate.css (Animations)</span>
+                    <span>VueUse (+ vueuse/sound for composable utilities)</span>
+                    <span>FontAwesome 6 (icons)</span>
+                    <span>moment (Date formatting)</span>
+                    <span>lodash-es (Utility methods)</span>
+                    <span>vue-pdf-embed (Pdf Viewer)</span>
+                </div>
+            </div>
         </div>
         <div id="right-fireworks" class="w-1/4">
             <div class="firework relative" v-for="(firework, i) in 3" :id="`firework${i + 3}`" :key="i + 3">
@@ -95,7 +137,7 @@ watch(
 }
 
 .fireworks {
-    background-color: rgba(50, 50, 64, 0.9);
+    background-color: rgba(50, 50, 64, 0.95);
 }
 
 @for $i from 0 through 6 {
@@ -145,7 +187,7 @@ watch(
 
 .animate-credits {
     transform: translateY(100%);
-    animation: 20s credits ease-in-out 1;
+    animation: 20s credits ease-in-out 1 forwards;
 }
 
 @keyframes credits {
