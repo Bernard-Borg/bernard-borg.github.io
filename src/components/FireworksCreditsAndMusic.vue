@@ -22,7 +22,7 @@ const stopEverything = () => {
 };
 
 const stopFinaleAnimation = (e: MouseEvent) => {
-    if (e.target instanceof HTMLElement && e.target.classList.contains("fireworks")) {
+    if (e.target instanceof HTMLElement && e.target && e.target.classList.contains("fireworks")) {
         gameStore.resetGame();
     }
 };

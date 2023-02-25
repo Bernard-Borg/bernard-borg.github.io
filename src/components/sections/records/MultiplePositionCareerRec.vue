@@ -27,7 +27,9 @@ const clickedCurrent = () => {
                     <span class="text-lg font-bold">{{ careerRecord.company }}</span>
                     <span
                         v-if="careerRecord.positions.some((x) => !x.endDate)"
-                        class="bg-blue-600 text-white text-sm px-2 py-1 rounded-lg ml-2"
+                        :class="`bg-blue-600 text-white text-sm px-2 py-1 rounded-lg ml-2 ${
+                            gameStore.easterEggState.enabled ? 'cursor-pointer' : ''
+                        }`"
                         @click="clickedCurrent"
                     >
                         Current
