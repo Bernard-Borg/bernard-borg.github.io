@@ -82,7 +82,7 @@ function close() {
 
                     For the second key, a career story to unfold,
                     Sum up the positions, in order they were enrolled.
-                    Concatenate my drowsiness detector's precision next,
+                    Concatenate my drowsiness detector's fps next,
                     To unlock a secret that is truly complex.
                     
                     Keep searching on, don't be a quitter,
