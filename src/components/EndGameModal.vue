@@ -27,7 +27,7 @@ const hintText = computed<string>(() => {
     if (hoverCounter.value < 10) {
         return "1. The first digit is located in the a comment in the HTML.\n2. The second digit is located in the 'Career' screen\n3. The third digit is located in my research paper.\n4. The last digit is located somewhere in this modal.";
     } else if (hoverCounter.value >= 10 && hoverCounter.value < 25) {
-        return "1. Access the HTML through inspect element and look for comments.\n2. Count the number of job positions there are listed in the Careers section (include positions which are at the same company).\n3. Sum the digits of the FPS of the SVM classifier in my 'Driver Drowsiness Detection' research paper (page 41, table 7)\n4. Look carefully at this hint.";
+        return "1. Access the HTML through inspect element and look for comments.\n2. Count the number of job positions there are listed in the Careers section (include positions which are at the same company).\n3. Sum the digits of the FPS of the SVM classifier in my 'Driver Drowsiness Detection' research paper (page 41, table 6)\n4. Look carefully at this hint.";
     } else if (hoverCounter.value >= 25 && hoverCounter.value < 50) {
         return "You're persistent! The last digit is 4";
     } else if (hoverCounter.value >= 50 && hoverCounter.value < 100) {
