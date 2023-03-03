@@ -18,8 +18,7 @@ const qualificationHistory: QualificationRecord[] = [
     {
         name: "MATSEC Certificate",
         institution: "St. Aloysius College",
-        description:
-            "A-levels: Computing (Private lessons), Chemistry, Pure Maths; Intermediate levels: German, Marketing, SOK",
+        description: "A-levels: Computing, Chemistry, Pure Maths; Intermediate levels: German, Marketing, SOK",
         type: "Academic",
         yearAchieved: 2019,
         eqfLevel: 4
@@ -27,7 +26,7 @@ const qualificationHistory: QualificationRecord[] = [
     {
         name: "SEC Certificate",
         institution: "Stella Maris College",
-        description: "O-levels: Maths, Computing, Chemistry, Physics, English, Maltese, English Lit., Religion",
+        description: "O-levels: Maths, Computing, Chemistry, Physics, English, Maltese, English Lit., Religion, German",
         type: "Academic",
         yearAchieved: 2017,
         eqfLevel: 3
