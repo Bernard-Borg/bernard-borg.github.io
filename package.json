@@ -17,9 +17,9 @@
         "moment": "^2.29.4",
         "pinia": "^2.0.30",
         "sass": "^1.58.3",
-        "vue": "^3.2.45",
+        "vue": "3.4.15",
         "vue-inline-svg": "^3.1.1",
-        "vue-pdf-embed": "^1.1.5"
+        "vue-pdf-embed": "1.2.1"
     },
     "devDependencies": {
         "@types/lodash-es": "^4.17.6",
