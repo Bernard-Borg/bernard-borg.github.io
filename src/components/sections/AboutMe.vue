@@ -28,11 +28,10 @@ const yearsOfLearning = computed(() => {
             /></HoverLink
         >. I have been learning Computing/Software Development for the past {{ yearsOfLearning }} years. My journey into
         the world of software started out with a love for Java. The first thing I got obsessed with was JOptionPanes. I
-        used to make use of them in all my projects. Soon after, I learnt about more advanced GUI technologies such as
+        used to make use of them in all my projects. Soon after, I got into more advanced GUI technologies such as
         AWT and Swing. I enjoyed tinkering around, creating small programs, eventually creating a small
         <HoverLink text="2D maze game"><img src="/images/BAmazed.png" class="w-96" /></HoverLink>
-        for my MATSEC A-level project (which I completed through private lessons, while studying Chemistry and Pure
-        Mathematics for my A-levels).
+        for my MATSEC A-level project.
     </p>
     <p class="text-md md:text-lg leading-7 md:text-justify mb-3">
         Later on, I started completing online courses on various technologies, namely Java and Kotlin (through
@@ -48,8 +47,8 @@ const yearsOfLearning = computed(() => {
         at the University of Malta, while also being part of multiple student placement internships. I have now graduated with a
         first-class honours and am working full-time at <HoverLink text="Megabyte" link="https://www.megabyte.net/" :openInNewTab="true">
             <img src="/images/megabyte-logo.png" class="w-28" />
-        </HoverLink>. 
-        I'm currently looking to get a diploma in UI/UX design, enjoy contributing on 
+        </HoverLink> (now part of PwC Malta). 
+        I'm have recently graduated from my diploma in UI/UX design. I enjoy contributing on 
         <HoverLink text="StackOverflow" link="https://stackoverflow.com/users/13426975/bernard-borg" :openInNewTab="true"></HoverLink> 
         and love to create some <HoverLink text="personal projects" link="https://github.com/Bernard-Borg/" :openInNewTab="true"></HoverLink> 
         when I'm bored.
@@ -61,7 +60,7 @@ const yearsOfLearning = computed(() => {
         <li>.NET Core 6</li>
     </ul>
     <p class="text-md md:text-lg leading-7 md:text-justify mb-3">
-        In my free time, I enjoy learning about new technologies by creating personal projects and reading about UI/UX design. Moreover, I play the trumpet with the Count Roger Band of Rabat and enjoy playing 
+        In my free time, I enjoy learning about new technologies by creating personal projects and reading about UI/UX design. Moreover, I enjoy playing 
         <HoverLink text="video games">
             <img src="/images/Playtime.png" alt="Image of my play time">
         </HoverLink>, spending time with my 
@@ -69,7 +68,7 @@ const yearsOfLearning = computed(() => {
             <div class="grid grid-cols-2 max-w-[300px]">
             <img src="/images/Rubee.jpg" class="h-full object-cover" alt="Rubee"><img src="/images/Peanut.png" class="h-full object-cover" alt="Peanut">
             <span>Rubee</span><span>Peanut</span>
-        </div></HoverLink>, listening to music and travelling. I'm also interested in Typography (did you notice that I love the font Inter?) and drawing.
+        </div></HoverLink>, listening to music and travelling. I'm also interested in Typography (did you notice that I love the font Inter?), typing (including keyboards) and drawing.
     </p>
 </template>
 

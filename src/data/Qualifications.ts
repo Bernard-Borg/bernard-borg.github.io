@@ -9,6 +9,14 @@ export type QualificationRecord = {
 
 const qualificationHistory: QualificationRecord[] = [
     {
+        name: "Professional Diploma in UX Design",
+        institution: "UX Design Institute (through ICE Malta)",
+        description: "https://www.credential.net/bf12b12a-ec56-40b2-a334-81302eae626e#gs.488b99",
+        type: "IT-specific",
+        yearAchieved: 2023,
+        eqfLevel: 5
+    },
+    {
         name: "Bsc. in IT (Software Development)",
         institution: "University of Malta",
         type: "Academic",

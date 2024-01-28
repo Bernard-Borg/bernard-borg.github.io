@@ -28,21 +28,35 @@ export type CareerRecord = {
 
 const careerHistory: CareerRecord[] = [
     {
-        company: "Megabyte Ltd.",
+        company: "PwC Malta / Megabyte Ltd (acquired)",
         positions: [
+            {
+                title: "Fullstack Software Developer",
+                type: "Full-time",
+                startDate: new Date("07/01/2023"),
+                description: [
+                    "Continued development on the multi-year project from the Junior position",
+                    "Created PowerShell scripts to generate Typescript unions to improve maintainability",
+                    "Successfully presented the project to important clients",
+                    "Developed reports using DevExpress's XtraReports",
+                    "Worked on soft-skills including communication, feedback-giving and teamwork"
+                ]
+            },
             {
                 title: "Junior Software Developer",
                 type: "Full-time",
                 startDate: new Date("09/01/2022"),
+                endDate: new Date("07/01/2023"),
                 description: [
                     "Maintained a legacy codebase written in VB.NET and another legacy system written in .NET Framework 4 (C#)",
                     "Added new features and performed refactoring on an ongoing Vue + .NET 6 project",
-                    "Added new features to a PWA mobile application written in JavaScript",
+                    "Added new features to a PWA mobile application written in vanilla JavaScript",
                     "Designed, implemented and documented (through DevOps) the front-end of a large-scale project (Vue 3 + Vite + Pinia + Typescript + Bootstrap 5 + SASS) and assisted in the design and implementation of the back-end (.NET + C#) and its integration with the front-end and an Oracle database",
                     "Created wireframes using Figma",
                     "Created a large number of Vue components from scratch and adjusted existing ones",
                     "Was part of multiple projects using an Agile approach, extensively using tools such as DevOps and Git",
-                    "Met with clients to clarify requirements for the design of the system"
+                    "Met with clients to clarify requirements for the design of the system",
+                    "Gave training to colleagues on VueJS"
                 ]
             },
             {
@@ -67,13 +81,14 @@ const careerHistory: CareerRecord[] = [
             { name: "DevExpress + DevExtreme", type: "Library", familiarity: "Intermediate" },
             { name: "Bootstrap 5", type: "Library", familiarity: "Advanced" },
             { name: "Microsoft SQL Server", type: "Database", familiarity: "Intermediate" },
+            { name: "Oracle DB", type: "Database", familiarity: "Intermediate" },
             { name: "DevOps", type: "Tool", familiarity: "Intermediate" },
             { name: "Git", type: "Tool", familiarity: "Advanced" },
             { name: "Yarn", type: "Tool", familiarity: "Intermediate" },
             { name: "npm", type: "Tool", familiarity: "Intermediate" },
             { name: "Vite", type: "Tool", familiarity: "Intermediate" }
         ],
-        location: "Mosta Technopark, Malta"
+        location: "Qormi (previously Mosta Technopark), Malta"
     },
     {
         company: "University of Malta",
@@ -106,7 +121,7 @@ const testimonials: Array<Testimonial> = [
     {
         name: "Spinning Seal",
         quote: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero minima ex assumenda, doloribus quisquam accusantium provident iure itaque sequi placeat. Consectetur dignissimos consequuntur quasi nisi corrupti rerum nulla fugit.",
-        workplace: "Megabajd"
+        workplace: "Megabyte Ltd."
     }
 ];
 

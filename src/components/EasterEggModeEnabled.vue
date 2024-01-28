@@ -35,7 +35,7 @@ defineExpose({ activate });
 <template>
     <div
         v-if="easterEggsFirstTime"
-        class="fixed w-full h-full bg-black/80 z-10 flex justify-center items-center"
+        class="fixed w-full h-full bg-black/80 z-10 flex justify-center items-center select-none"
         ref="eeModeEnabledContainer"
     >
         <span class="text-8xl top-1/2 arcade-classic change-color" ref="eeModeEnabledText">
