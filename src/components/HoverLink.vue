@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { type PropType, ref, reactive } from "vue";
+import { type PropType, ref, reactive, onMounted } from "vue";
 import { useElementBounding, useTimeoutFn } from "@vueuse/core";
 
 const props = defineProps({
@@ -10,7 +10,8 @@ const props = defineProps({
         type: String as PropType<"top" | "bottom" | "left" | "right">,
         default: "top"
     },
-    tooltipOffset: { type: Number, required: false, default: 7 }
+    tooltipOffset: { type: Number, required: false, default: 7 },
+    disableTooltipTouch: { type: Boolean, required: false, default: false }
 });
 
 const anchorElement = ref<HTMLElement>();
@@ -84,31 +85,38 @@ const doHover = () => {
 };
 
 const doTouchStart = (e: TouchEvent) => {
-    e.preventDefault();
-    showHideTooltip(true);
-    touchTimer = setTimeout(() => showHideTooltip(false), 1000);
+    if (!props.disableTooltipTouch) {
+        e.preventDefault();
+        showHideTooltip(true);
+        touchTimer = setTimeout(() => showHideTooltip(false), 1000);
+    }
 };
 
 const doTouchEnd = () => {
-    useTimeoutFn(() => {
-        showHideTooltip(false);
-    }, 100);
+    emit("touch");
+
+    if (!props.disableTooltipTouch) {
+        useTimeoutFn(() => {
+            showHideTooltip(false);
+        }, 100);
+    }
 };
 
-const emit = defineEmits(["hover-finish"]);
+const emit = defineEmits(["hover-finish", "touch"]);
 </script>
 
 <template>
     <a
         ref="anchorElement"
         :class="`text-blue-600 hover:text-blue-500 whitespace-nowrap xs:select-none lg:select-auto disable-long-press ${
-            link ? 'cursor-pointer' : ''
+            link ? 'cursor-pointer' : $attrs.class ?? ''
         }`"
         :href="link"
         :target="openInNewTab ? '_blank' : '_self'"
         style=""
         @mouseover="() => showHideTooltip(true)"
         @mouseleave="doHover"
+        @wheel="doHover"
         @touchstart="doTouchStart"
         @touchend="doTouchEnd"
     >

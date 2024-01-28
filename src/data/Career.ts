@@ -16,6 +16,7 @@ export type Testimonial = {
     name: string;
     quote: string;
     workplace: string;
+    fullTestimonial?: string;
     signature?: string;
 };
 
@@ -119,9 +120,24 @@ const careerHistory: CareerRecord[] = [
 
 const testimonials: Array<Testimonial> = [
     {
-        name: "Spinning Seal",
-        quote: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero minima ex assumenda, doloribus quisquam accusantium provident iure itaque sequi placeat. Consectetur dignissimos consequuntur quasi nisi corrupti rerum nulla fugit.",
-        workplace: "Megabyte Ltd."
+        name: "Andrei Zammit",
+        quote: "I am confident that Bernard Borg would be a tremendous asset to any organization seeking a skilled and dedicated software developer. His combination of technical expertise, teamwork, and commitment to excellence make him an outstanding candidate for any challenging software development role.",
+        workplace: "Megabyte Team Lead",
+        fullTestimonial: `
+Bernard is an exceptional software engineer and a fine individual. I have had the pleasure of working closely with Bernard, and I can confidently attest to his outstanding technical skills, dedication, and professional demeanour.
+<br/><br/>
+Bernard has consistently demonstrated a deep understanding of software development principles and has a proven track record of delivering high-quality, scalable, and efficient software solutions. His expertise spans a wide range of technologies, including .NET and a range of front-end frameworks.
+<br/><br/>
+One of Bernard's standout qualities is his ability to approach complex problems with a strategic mindset. He has been instrumental in designing and implementing several critical components of high-end software projects, showcasing not only his technical prowess but also his analytical and problem-solving skills. Bernard's commitment to writing clean, maintainable code and his attention to detail have significantly contributed to the success of our development initiatives.
+<br/><br/>
+In addition to his technical competence, Bernard is an excellent team player who collaborates effectively with colleagues and stakeholders. He communicates clearly and concisely. This makes him an invaluable asset during project discussions, planning sessions, and team meetings. His positive attitude and willingness to take on challenges make him a pleasure to work with.
+<br/><br/>
+Bernard's contributions extend beyond his technical role. He is proactive in staying updated with industry trends and continuously seeks opportunities for professional development. His enthusiasm for learning and adopting new technologies ensures that development teams remain at the forefront of innovation. Furthermore, working with Bernard is fun! Even during the worst situations, when the team is down, he has always managed to lift the morale of the rest of the team.
+<br/><br/>
+I am confident that Bernard Borg would be a tremendous asset to any organization seeking a skilled and dedicated software developer. His combination of technical expertise, teamwork, and commitment to excellence make him an outstanding candidate for any challenging software development role.
+<br/><br/>
+#jahli #qedjghix
+        `
     }
 ];
 

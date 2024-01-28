@@ -3,12 +3,38 @@ import { careerHistory, testimonials } from "@/data/Career";
 import { ref } from "vue";
 import SinglePositionCareerRec from "@/components/sections/records/SinglePositionCareerRec.vue";
 import MultiplePositionCareerRec from "@/components/sections/records/MultiplePositionCareerRec.vue";
+import HoverLink from "../HoverLink.vue";
 
+const hiddenDownload = ref<HTMLAnchorElement>();
 const testimonialsShown = ref<boolean>(false);
+
+const download = (filename: string, text: string) => {
+    if (!hiddenDownload.value) {
+        return;
+    }
+
+    hiddenDownload.value.href = `data:text/plain;charset=utf-8,${encodeURIComponent(text)}`;
+    hiddenDownload.value.download = filename;
+
+    hiddenDownload.value.click();
+};
+
+const stripHtml = (html: string) => {
+    let tmp = document.createElement("div");
+    tmp.innerHTML = html;
+    return tmp.textContent || tmp.innerText || "";
+};
+
+const downloadTestimonial = (name: string, testimonial: string) => {
+    testimonial = stripHtml(testimonial);
+
+    download(`testimonial_${name}.txt`, testimonial);
+};
 </script>
 
 <template>
     <div>
+        <a ref="hiddenDownload" hidden></a>
         <div v-for="(careerRecord, i) in careerHistory" :key="i">
             <div :class="`p-3 py-5 flex flex-col border-dashed border-gray-400 ${i > 0 ? 'border-t' : ''}`">
                 <template v-if="careerRecord.positions.length === 1">
@@ -40,6 +66,18 @@ const testimonialsShown = ref<boolean>(false);
                     <div class="flex flex-col w-full items-end mt-3">
                         <span class="text-md font-bold">{{ testimonial.name }}</span>
                         <span class="text-sm">{{ testimonial.workplace }}</span>
+                        <HoverLink
+                            v-if="testimonial.fullTestimonial"
+                            text="Read full testimonial"
+                            tooltipPosition="top"
+                            class="cursor-help"
+                            :disableTooltipTouch="true"
+                            @touch="downloadTestimonial(testimonial.name, testimonial.fullTestimonial)"
+                        >
+                            <div class="max-w-[800px]">
+                                <span v-html="testimonial.fullTestimonial"></span>
+                            </div>
+                        </HoverLink>
                     </div>
                 </div>
             </div>
