@@ -48,7 +48,7 @@ const yearsOfLearning = computed(() => {
         first-class honours and am working full-time at <HoverLink text="Megabyte" link="https://www.megabyte.net/" :openInNewTab="true">
             <img src="/images/megabyte-logo.png" class="w-28" />
         </HoverLink> (now part of PwC Malta). 
-        I'm have recently graduated from my diploma in UI/UX design. I enjoy contributing on 
+        I have recently graduated from my diploma in UI/UX design. I enjoy contributing on 
         <HoverLink text="StackOverflow" link="https://stackoverflow.com/users/13426975/bernard-borg" :openInNewTab="true"></HoverLink> 
         and love to create some <HoverLink text="personal projects" link="https://github.com/Bernard-Borg/" :openInNewTab="true"></HoverLink> 
         when I'm bored.
