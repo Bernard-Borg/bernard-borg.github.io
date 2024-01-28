@@ -72,7 +72,7 @@ const downloadTestimonial = (name: string, testimonial: string) => {
                             tooltipPosition="top"
                             class="cursor-help"
                             :disableTooltipTouch="true"
-                            @touch="downloadTestimonial(testimonial.name, testimonial.fullTestimonial)"
+                            @touch="downloadTestimonial(testimonial.name, testimonial.fullTestimonial ?? '')"
                         >
                             <div class="max-w-[800px]">
                                 <span v-html="testimonial.fullTestimonial"></span>
