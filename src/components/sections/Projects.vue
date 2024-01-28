@@ -15,6 +15,7 @@ import projectsList from "@/data/Projects";
                         v-if="project.downloadable"
                         :href="project.liveLink"
                         target="_blank"
+                        title="Download"
                         aria-label="Download button"
                     >
                         <span
@@ -27,6 +28,7 @@ import projectsList from "@/data/Projects";
                         v-else-if="project.liveLink"
                         :href="project.liveLink"
                         target="_blank"
+                        title="Visit project"
                         aria-label="Link to hosted project"
                     >
                         <span
@@ -39,6 +41,7 @@ import projectsList from "@/data/Projects";
                         v-if="project.githubLink"
                         :href="project.githubLink"
                         target="_blank"
+                        title="Github Page"
                         aria-label="Link to project Github Page"
                     >
                         <span
