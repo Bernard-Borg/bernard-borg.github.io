@@ -4,6 +4,7 @@ import { ref } from "vue";
 import SinglePositionCareerRec from "@/components/sections/records/SinglePositionCareerRec.vue";
 import MultiplePositionCareerRec from "@/components/sections/records/MultiplePositionCareerRec.vue";
 import HoverLink from "../HoverLink.vue";
+import { useWindowSize } from "@vueuse/core";
 
 const hiddenDownload = ref<HTMLAnchorElement>();
 const testimonialsShown = ref<boolean>(false);
@@ -30,6 +31,8 @@ const downloadTestimonial = (name: string, testimonial: string) => {
 
     download(`testimonial_${name}.txt`, testimonial);
 };
+
+const { width } = useWindowSize();
 </script>
 
 <template>
@@ -71,7 +74,7 @@ const downloadTestimonial = (name: string, testimonial: string) => {
                             text="Read full testimonial"
                             tooltipPosition="top"
                             class="cursor-help"
-                            :disableTooltipTouch="true"
+                            :disableTooltipTouch="width < 768"
                             @touch="downloadTestimonial(testimonial.name, testimonial.fullTestimonial ?? '')"
                         >
                             <div class="max-w-[800px]">

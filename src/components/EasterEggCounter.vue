@@ -24,9 +24,11 @@ watch(
 <template>
     <div
         v-if="gameStore.easterEggState.enabled && !gameStore.isInFinale"
-        class="absolute top-0 left-0 bg-white rounded-md m-3 py-2 pl-3 pr-6 text-black z-[100]"
+        class="absolute top-0 left-0 bg-white rounded-md m-3 py-2 px-3 text-black z-[100]"
     >
-        <span> Easter eggs left: {{ Object.values(gameStore.remainingEasterEggs).length }} </span>
+        <span class="text-sm md:text-md"
+            >Easter eggs left: {{ Object.values(gameStore.remainingEasterEggs).length }}</span
+        >
     </div>
     <button
         v-else-if="gameStore.isInFinale && !isEndGameModalShowing && !gameStore.animatingFinale"

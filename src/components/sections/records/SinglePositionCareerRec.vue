@@ -48,7 +48,7 @@ const clickedCurrent = () => {
                 </span>
             </div>
             <div class="flex gap-x-3 md:gap-x-0 items-center justify-end mt-3 md:mt-0 md:mr-5">
-                <CareerLink v-if="careerRecord.skills" text="Skills" class="w-24" />
+                <CareerLink v-if="careerRecord.skills?.length" text="Skills" class="w-24" />
                 <CareerLink
                     v-if="careerRecord.positions[0].description"
                     :text="visible ? 'Hide' : 'Details'"

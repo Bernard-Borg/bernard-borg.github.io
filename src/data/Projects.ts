@@ -24,9 +24,9 @@ const projectsList: Project[] = [
         learningOutcomes: ["Vite", "Vue", "Typescript"]
     },
     {
-        name: "SoundboardApp",
-        liveLink: "https://github.com/Bernard-Borg/SoundboardApp/releases/",
-        githubLink: "https://github.com/Bernard-Borg/SoundboardApp",
+        name: "Sonicity",
+        liveLink: "https://github.com/Bernard-Borg/Sonicity/releases/",
+        githubLink: "https://github.com/Bernard-Borg/Sonicity",
         previewImage: "/images/SoundboardApp.png",
         downloadable: true,
         learningOutcomes: [

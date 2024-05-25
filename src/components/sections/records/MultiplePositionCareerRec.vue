@@ -39,7 +39,7 @@ const clickedCurrent = () => {
                 <span class="text-sm text-gray-500">{{ getDuration(careerRecord) }}</span>
             </div>
             <div class="flex items-center justify-end mt-3 md:mt-0 md:mr-5">
-                <CareerLink v-if="careerRecord.skills" text="Skills" class="w-24" />
+                <CareerLink v-if="careerRecord.skills?.length" text="Skills" class="w-24" />
             </div>
         </div>
         <div v-for="(careerPosition, i) in careerRecord.positions" :key="i" class="flex gap-x-3">

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { type PropType, ref, reactive, onMounted } from "vue";
-import { useElementBounding, useTimeoutFn } from "@vueuse/core";
+import { type PropType, ref, reactive } from "vue";
+import { useElementBounding, useTimeoutFn, useWindowSize } from "@vueuse/core";
 
 const props = defineProps({
     text: { type: String, required: true },
@@ -79,8 +79,17 @@ const updatePosition = () => {
     }
 };
 
-const doHover = () => {
-    showHideTooltip(false);
+const doHoverStart = () => {
+    if (!props.disableTooltipTouch) {
+        showHideTooltip(true);
+    }
+};
+
+const doHoverStop = () => {
+    if (!props.disableTooltipTouch) {
+        showHideTooltip(false);
+    }
+
     emit("hover-finish");
 };
 
@@ -114,9 +123,9 @@ const emit = defineEmits(["hover-finish", "touch"]);
         :href="link"
         :target="openInNewTab ? '_blank' : '_self'"
         style=""
-        @mouseover="() => showHideTooltip(true)"
-        @mouseleave="doHover"
-        @wheel="doHover"
+        @mouseover="doHoverStart"
+        @mouseleave="doHoverStop"
+        @wheel="doHoverStop"
         @touchstart="doTouchStart"
         @touchend="doTouchEnd"
     >
