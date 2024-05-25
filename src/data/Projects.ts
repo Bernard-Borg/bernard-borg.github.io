@@ -43,7 +43,7 @@ const projectsList: Project[] = [
     {
         name: "VideoVish",
         liveLink: "https://videovish.vercel.app/",
-        previewImage: "/images/VideOVish.png",
+        previewImage: "/images/VidVish.png",
         downloadable: true,
         githubLink: "https://github.com/Bernard-Borg/VideoVish",
         learningOutcomes: [
